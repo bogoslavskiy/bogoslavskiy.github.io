@@ -1,14 +1,16 @@
 {
-  "version": 1,
+  "version": 2,
   "companies_config": "/data/menu-access-card-companies.json",
   "canvas": {
-    "width": 2400,
-    "height": 1500,
+    "width": 1465,
+    "height": 1016,
     "density_dpi": 300,
-    "corner_radius": 120
+    "physical_width_mm": 124,
+    "physical_height_mm": 86,
+    "corner_radius": 0
   },
   "html_preview": {
-    "container_padding": 200,
+    "container_padding": 122,
     "background": "#F2F3F5"
   },
   "copy": {
@@ -23,39 +25,39 @@
     ]
   },
   "layout": {
-    "headline_top": 125,
-    "label_top": 400,
-    "label_line_height": 84,
-    "tile_top": 605,
-    "tile_size": 600,
-    "left_center_x": 600,
-    "right_center_x": 1800,
-    "company_logo_center_y": 905,
-    "company_logo_box_size": 280,
+    "headline_top": 126,
+    "label_top": 294,
+    "label_line_height": 51,
+    "tile_top": 419,
+    "tile_size": 366,
+    "left_center_x": 366,
+    "right_center_x": 1099,
+    "company_logo_center_y": 602,
+    "company_logo_box_size": 171,
     "company_logo_default_position": "bottom",
     "company_logo_positions": {
       "bottom": {
-        "center_y": 1240,
-        "box_size": 280
+        "center_y": 807,
+        "box_size": 171
       },
       "center": {
-        "center_y": 905,
-        "box_size": 280
+        "center_y": 602,
+        "box_size": 171
       },
       "under_headline": {
-        "center_y": 440,
-        "box_size": 280
+        "center_y": 319,
+        "box_size": 171
       }
     },
-    "company_logo_safe_margin": 100,
-    "safe_margin": 120
+    "company_logo_safe_margin": 61,
+    "safe_margin": 73
   },
   "typography": {
     "font_family": "Avenir Next, Helvetica Neue, Arial, sans-serif",
-    "headline_size": 145,
+    "headline_size": 89,
     "headline_weight": 700,
-    "headline_letter_spacing": 12,
-    "label_size": 76,
+    "headline_letter_spacing": 7,
+    "label_size": 46,
     "label_weight": 500,
     "label_letter_spacing": 0
   },
@@ -64,7 +66,7 @@
     "foreground": "#000000",
     "stroke": "#FFFFFF",
     "stroke_width": 0,
-    "corner_radius": 82,
-    "qr_size": 450
+    "corner_radius": 50,
+    "qr_size": 275
   }
 }

@@ -1,7 +1,7 @@
 const CONFIG_URL = "/data/menu-access-card-config.json";
 const OUTPUT_ROOT = "/data/generated/menu-access-cards-v1";
 const PIXELS_PER_METER_300_DPI = 11811;
-const PREVIEW_SCALE = 0.4;
+const PREVIEW_SCALE = 0.6;
 const FALLBACK_LOGO_POSITION = "bottom";
 const LOGO_POSITION_STORAGE_PREFIX = "sigmela-menu-card-logo-position-v2:";
 const LOGO_POSITION_OPTIONS = [
@@ -142,25 +142,6 @@ async function generatedCompanies(configuredCompanies) {
   return candidates.filter(Boolean);
 }
 
-function coverImage(context, image, width, height) {
-  const scale = Math.max(width / image.naturalWidth, height / image.naturalHeight);
-  const sourceWidth = width / scale;
-  const sourceHeight = height / scale;
-  const sourceX = (image.naturalWidth - sourceWidth) / 2;
-  const sourceY = (image.naturalHeight - sourceHeight) / 2;
-  context.drawImage(
-    image,
-    sourceX,
-    sourceY,
-    sourceWidth,
-    sourceHeight,
-    0,
-    0,
-    width,
-    height,
-  );
-}
-
 function canvasFontFamily(value) {
   const genericFamilies = new Set([
     "serif",
@@ -230,7 +211,7 @@ function drawCardBackground(context, background) {
   context.save();
   roundedRectPath(context, 0, 0, width, height, cornerRadius);
   context.clip();
-  coverImage(context, background, width, height);
+  context.drawImage(background, 0, 0, width, height);
   context.restore();
 }
 
@@ -594,7 +575,9 @@ function createCardView(company) {
     if (view.downloadLink.getAttribute("aria-disabled") === "true") return;
     view.downloadLink.setAttribute("aria-disabled", "true");
     const previousStatus = view.cardStatus.textContent;
-    view.cardStatus.textContent = "Готовлю PNG 2400×1500 · 300 DPI…";
+    view.cardStatus.textContent =
+      `Готовлю PNG ${cardConfig.canvas.width}×${cardConfig.canvas.height} · ` +
+      `${cardConfig.canvas.physical_width_mm}×${cardConfig.canvas.physical_height_mm} мм · 300 DPI…`;
     try {
       const assets = await loadCardAssets(company);
       const exportCanvas = document.createElement("canvas");
@@ -676,7 +659,8 @@ async function renderCard(
   drawComposition(view.canvas, assets, logoPosition, guides);
   view.downloadLink.setAttribute("aria-disabled", "false");
   view.cardStatus.textContent =
-    `Предпросмотр готов · экспорт 2400×1500 · 300 DPI · ` +
+    `Предпросмотр готов · экспорт ${cardConfig.canvas.width}×${cardConfig.canvas.height} · ` +
+    `${cardConfig.canvas.physical_width_mm}×${cardConfig.canvas.physical_height_mm} мм · 300 DPI · ` +
     `Логотип: ${logoPositionLabel(logoPosition)}`;
 }
 
@@ -695,7 +679,8 @@ async function renderAll() {
   }
   if (version !== renderVersion) return;
   setStatus(
-    `${companies.length} карточек готовы · Canvas · PNG 2400×1500 · 300 DPI`,
+    `${companies.length} карточек готовы · Canvas · PNG ${cardConfig.canvas.width}×${cardConfig.canvas.height} · ` +
+      `${cardConfig.canvas.physical_width_mm}×${cardConfig.canvas.physical_height_mm} мм · 300 DPI`,
     "ready",
   );
 }

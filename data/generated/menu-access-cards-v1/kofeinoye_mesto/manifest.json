@@ -4,6 +4,7 @@
   "shortname": "kofeinoye_mesto",
   "text_color": "#111111",
   "company_logo": "company-logo.png",
-  "dimensions": "2400x1500",
-  "density_dpi": 300
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
 }
