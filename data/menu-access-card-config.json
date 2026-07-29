@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "companies_config": "/data/menu-access-card-companies.json",
+  "canvas": {
+    "width": 2400,
+    "height": 1500,
+    "density_dpi": 300,
+    "corner_radius": 120
+  },
+  "html_preview": {
+    "container_padding": 200,
+    "background": "#F2F3F5"
+  },
+  "copy": {
+    "headline": "МЕНЮ",
+    "qr_label": [
+      "Наведите",
+      "камеру"
+    ],
+    "nfc_label": [
+      "Приложите",
+      "телефон"
+    ]
+  },
+  "layout": {
+    "headline_top": 125,
+    "label_top": 400,
+    "label_line_height": 84,
+    "tile_top": 605,
+    "tile_size": 600,
+    "left_center_x": 600,
+    "right_center_x": 1800,
+    "company_logo_center_y": 905,
+    "company_logo_box_size": 280,
+    "company_logo_default_position": "bottom",
+    "company_logo_positions": {
+      "bottom": {
+        "center_y": 1240,
+        "box_size": 280
+      },
+      "center": {
+        "center_y": 905,
+        "box_size": 280
+      },
+      "under_headline": {
+        "center_y": 440,
+        "box_size": 280
+      }
+    },
+    "company_logo_safe_margin": 100,
+    "safe_margin": 120
+  },
+  "typography": {
+    "font_family": "Avenir Next, Helvetica Neue, Arial, sans-serif",
+    "headline_size": 145,
+    "headline_weight": 700,
+    "headline_letter_spacing": 12,
+    "label_size": 76,
+    "label_weight": 500,
+    "label_letter_spacing": 0
+  },
+  "tiles": {
+    "background": "#FFFFFF",
+    "foreground": "#000000",
+    "stroke": "#FFFFFF",
+    "stroke_width": 0,
+    "corner_radius": 82,
+    "qr_size": 450
+  }
+}

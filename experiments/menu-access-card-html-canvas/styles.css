@@ -1,0 +1,95 @@
+@import url("../tableboard-html-canvas/styles.css");
+
+.controls {
+  width: auto;
+  min-width: 240px;
+}
+
+.cards-list {
+  display: grid;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.logo-position-field {
+  display: grid;
+  gap: 4px;
+  color: #aaa79f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.logo-position-select {
+  min-width: 152px;
+  min-height: 40px;
+  padding-inline: 12px 32px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.card-actions .download-button {
+  min-height: 40px;
+  padding-inline: 14px;
+  font-size: 13px;
+}
+
+.public-link {
+  color: #a7ef99;
+  font-size: 13px;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.card-status {
+  color: #aaa79f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.canvas-stage {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 2800 / 1900;
+  padding: 7.1428571429%;
+  place-items: stretch;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 720px) {
+  .preview-heading,
+  .card-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .card-actions {
+    width: 100%;
+  }
+
+  .card-actions .download-button {
+    width: 100%;
+  }
+
+  .logo-position-field,
+  .logo-position-select {
+    width: 100%;
+  }
+}

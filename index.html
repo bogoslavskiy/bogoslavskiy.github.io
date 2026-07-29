@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Карточки меню — Sigmela</title>
+    <meta
+      name="description"
+      content="Готовые QR- и NFC-карточки заведений с экспортом PNG 2400×1500."
+    />
+    <meta property="og:title" content="Карточки меню — Sigmela" />
+    <meta
+      property="og:description"
+      content="Готовые QR- и NFC-карточки заведений с экспортом PNG 2400×1500."
+    />
+    <meta property="og:type" content="website" />
+    <link
+      rel="stylesheet"
+      href="/experiments/menu-access-card-html-canvas/styles.css"
+    />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Sigmela · карточки меню</p>
+          <h1>Готовые карточки для QR и NFC</h1>
+          <p class="intro">
+            Выберите положение логотипа, проверьте макет и скачайте готовый PNG
+            2400×1500 с плотностью 300 DPI.
+          </p>
+        </div>
+
+        <div class="controls" aria-label="Управление макетом">
+          <label class="checkbox">
+            <input id="guides-toggle" type="checkbox" />
+            Показать служебные зоны
+          </label>
+        </div>
+      </header>
+
+      <section class="status-bar" aria-live="polite">
+        <span id="status-dot" class="status-dot"></span>
+        <span id="status-text">Загрузка карточек…</span>
+      </section>
+
+      <section
+        id="cards-list"
+        class="cards-list"
+        aria-label="Карточки меню"
+      ></section>
+
+      <section class="facts" aria-label="Параметры карточек">
+        <div>
+          <span>Макет</span>
+          <strong>единая выверенная сетка</strong>
+        </div>
+        <div>
+          <span>QR</span>
+          <strong>чёрный код на белом фоне</strong>
+        </div>
+        <div>
+          <span>NFC</span>
+          <strong>универсальный символ справа</strong>
+        </div>
+        <div>
+          <span>Экспорт</span>
+          <strong>PNG, 2400×1500, 300 DPI</strong>
+        </div>
+      </section>
+    </main>
+
+    <script
+      type="module"
+      src="/experiments/menu-access-card-html-canvas/renderer.js"
+    ></script>
+  </body>
+</html>
