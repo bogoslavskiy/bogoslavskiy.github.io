@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "company": "Кофе в доме",
+  "shortname": "kofe_v_dome",
+  "text_color": "#111111",
+  "company_logo": "company-logo.png",
+  "dimensions": "2400x1500",
+  "density_dpi": 300
+}

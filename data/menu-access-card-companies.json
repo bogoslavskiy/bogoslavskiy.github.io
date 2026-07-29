@@ -26,6 +26,18 @@
       "shortname": "biography_coffee"
     },
     {
+      "name": "Amazing Cacao",
+      "shortname": "amazingcacao"
+    },
+    {
+      "name": "Кофе в доме",
+      "shortname": "kofe_v_dome"
+    },
+    {
+      "name": "Слой",
+      "shortname": "sloy.bakery"
+    },
+    {
       "name": "Coffee 232",
       "shortname": "cff232.spb"
     },
@@ -34,8 +46,16 @@
       "shortname": "coffeeandlo"
     },
     {
+      "name": "Event Coffeebar",
+      "shortname": "event_coffeebar"
+    },
+    {
       "name": "Мечтатели",
       "shortname": "followdreamers"
+    },
+    {
+      "name": "Bolshecoffee Roasters",
+      "shortname": "bolshecoffeeroasters"
     },
     {
       "name": "Keny",
@@ -284,6 +304,102 @@
     {
       "name": "Кофевиль",
       "shortname": "kofevil"
+    },
+    {
+      "name": "Fort Brew",
+      "shortname": "fort_brew"
+    },
+    {
+      "name": "Свитер",
+      "shortname": "sweeter_indapiter"
+    },
+    {
+      "name": "Ходят слухи",
+      "shortname": "hodyat_slyhi_spb"
+    },
+    {
+      "name": "We Want More",
+      "shortname": "wewantmore_spb"
+    },
+    {
+      "name": "Academia Cafe",
+      "shortname": "academia_cafe"
+    },
+    {
+      "name": "КБТ",
+      "shortname": "kbt.spb"
+    },
+    {
+      "name": "Alex Coffee",
+      "shortname": "alexcoffee_murino"
+    },
+    {
+      "name": "Спасибо/пожалуйста",
+      "shortname": "thxyourewelcome"
+    },
+    {
+      "name": "Спэшл",
+      "shortname": "speshl.coffee"
+    },
+    {
+      "name": "greenWich",
+      "shortname": "greenwich_spb"
+    },
+    {
+      "name": "7a.m.",
+      "shortname": "7.am.pm"
+    },
+    {
+      "name": "Центроварка",
+      "shortname": "centrovarka"
+    },
+    {
+      "name": "День Хлеба",
+      "shortname": "the.breadday"
+    },
+    {
+      "name": "Mart",
+      "shortname": "coffee.mart"
+    },
+    {
+      "name": "Мера кофе",
+      "shortname": "mera_coffee_mera"
+    },
+    {
+      "name": "Civil Coffee",
+      "shortname": "civil.coffeebar"
+    },
+    {
+      "name": "Вираж",
+      "shortname": "virage_cooperative"
+    },
+    {
+      "name": "Будем знакомы",
+      "shortname": "budem.znakomy.coffee"
+    },
+    {
+      "name": "Communa",
+      "shortname": "communacoffee"
+    },
+    {
+      "name": "Kafema",
+      "shortname": "kafemaspb"
+    },
+    {
+      "name": "Hustle House",
+      "shortname": "hustlehousecoffee"
+    },
+    {
+      "name": "Мука",
+      "shortname": "mukacafe"
+    },
+    {
+      "name": "Парадная",
+      "shortname": "paradnayaspb"
+    },
+    {
+      "name": "Sight",
+      "shortname": "sightcoffeedine"
     }
   ]
 }
