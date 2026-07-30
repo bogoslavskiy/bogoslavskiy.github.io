@@ -572,9 +572,17 @@ function createCardView(company) {
     "aria-label",
     `Карточка меню ${company.name}, собранная в Canvas`,
   );
+  const publicShortname = company.public_shortname ?? company.shortname;
   const publicLink = article.querySelector(".public-link");
-  publicLink.href = `https://sigmela.ru/${company.shortname}`;
-  publicLink.textContent = `sigmela.ru/${company.shortname}`;
+  publicLink.href = `https://sigmela.ru/${publicShortname}`;
+  publicLink.textContent = `sigmela.ru/${publicShortname}`;
+  const logoPositionField = article.querySelector(".logo-position-field");
+  logoPositionField.hidden = Boolean(
+    company.background_contains_brand_signature,
+  );
+  if (company.background_contains_brand_signature) {
+    logoPositionField.style.display = "none";
+  }
   const logoPositionSelect = article.querySelector(".logo-position-select");
   for (const optionDefinition of LOGO_POSITION_OPTIONS) {
     const option = document.createElement("option");
@@ -594,6 +602,7 @@ function createCardView(company) {
     canvas,
     downloadLink: article.querySelector(".download-button"),
     cardStatus: article.querySelector(".card-status"),
+    logoPositionField,
     logoPositionSelect,
     logoPosition: initialLogoPosition,
     renderRequest: 0,
@@ -643,9 +652,12 @@ function createCardView(company) {
       anchor.download = `${company.name.replaceAll(":", "")} — Menu Card Canvas.png`;
       anchor.click();
       window.setTimeout(() => URL.revokeObjectURL(exportUrl), 30_000);
+      const brandPlacement = company.background_contains_brand_signature
+        ? "Надпись: в фоне"
+        : `Логотип: ${logoPositionLabel(view.logoPosition)}`;
       view.cardStatus.textContent =
         `PNG готов · ${exportMetadata.width}×${exportMetadata.height} · ` +
-        `${exportMetadata.dpiX} DPI · Логотип: ${logoPositionLabel(view.logoPosition)}`;
+        `${exportMetadata.dpiX} DPI · ${brandPlacement}`;
     } catch (error) {
       console.error(error);
       view.cardStatus.textContent = `Ошибка экспорта: ${error.message}`;
@@ -697,10 +709,13 @@ async function renderCard(
   if (isStale()) return;
   drawComposition(view.canvas, assets, logoPosition, guides);
   view.downloadLink.setAttribute("aria-disabled", "false");
+  const brandPlacement = company.background_contains_brand_signature
+    ? "Надпись: в фоне"
+    : `Логотип: ${logoPositionLabel(logoPosition)}`;
   view.cardStatus.textContent =
     `Предпросмотр готов · экспорт ${cardConfig.canvas.width}×${cardConfig.canvas.height} · ` +
     `${cardConfig.canvas.physical_width_mm}×${cardConfig.canvas.physical_height_mm} мм · 300 DPI · ` +
-    `Логотип: ${logoPositionLabel(logoPosition)}`;
+    brandPlacement;
 }
 
 async function renderAll() {

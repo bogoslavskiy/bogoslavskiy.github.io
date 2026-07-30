@@ -400,6 +400,20 @@
     {
       "name": "Sight",
       "shortname": "sightcoffeedine"
+    },
+    {
+      "name": "У Ларисы",
+      "shortname": "u_larisy"
+    },
+    {
+      "name": "У Ларисы — ковёр",
+      "shortname": "u_larisy_carpet",
+      "public_shortname": "u_larisy",
+      "background_contains_brand_signature": true
+    },
+    {
+      "name": "Колокол",
+      "shortname": "kolokol_cafe"
     }
   ]
 }

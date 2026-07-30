@@ -33,20 +33,20 @@
     "left_center_x": 366,
     "right_center_x": 1099,
     "company_logo_center_y": 620.5,
-    "company_logo_box_size": 171,
+    "company_logo_box_size": 188,
     "company_logo_default_position": "bottom",
     "company_logo_positions": {
       "bottom": {
-        "center_y": 857,
-        "box_size": 171
+        "center_y": 849,
+        "box_size": 188
       },
       "center": {
         "center_y": 620.5,
-        "box_size": 171
+        "box_size": 188
       },
       "under_headline": {
         "center_y": 319,
-        "box_size": 171
+        "box_size": 188
       }
     },
     "company_logo_safe_margin": 61,
