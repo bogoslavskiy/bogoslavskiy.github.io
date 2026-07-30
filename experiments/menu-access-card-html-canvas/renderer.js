@@ -11,6 +11,9 @@ const LOGO_POSITION_OPTIONS = [
 ];
 
 const cardsList = document.querySelector("#cards-list");
+const companySearch = document.querySelector("#company-search");
+const searchResults = document.querySelector("#search-results");
+const searchEmpty = document.querySelector("#search-empty");
 const guidesToggle = document.querySelector("#guides-toggle");
 const statusText = document.querySelector("#status-text");
 const statusDot = document.querySelector("#status-dot");
@@ -23,6 +26,35 @@ const cardViews = new Map();
 function setStatus(message, state = "loading") {
   statusText.textContent = message;
   statusDot.className = `status-dot ${state === "loading" ? "" : state}`;
+}
+
+function normalizeSearchValue(value) {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("ru-RU")
+    .replaceAll("ё", "е")
+    .replace(/[^a-zа-я0-9]+/gi, "");
+}
+
+function applyCompanySearch() {
+  const query = normalizeSearchValue(companySearch.value);
+  let visibleCompanies = 0;
+
+  for (const company of companies) {
+    const view = cardViews.get(company.shortname);
+    const searchableName = normalizeSearchValue(
+      `${company.name} ${company.shortname}`,
+    );
+    const isVisible = query.length === 0 || searchableName.includes(query);
+    view.article.hidden = !isVisible;
+    if (isVisible) visibleCompanies += 1;
+  }
+
+  searchResults.textContent = query
+    ? `Найдено: ${visibleCompanies} из ${companies.length}`
+    : `${companies.length} компаний`;
+  searchEmpty.hidden = visibleCompanies !== 0;
 }
 
 function logoPositionStorageKey(company) {
@@ -558,6 +590,7 @@ function createCardView(company) {
   );
   cardsList.append(article);
   const view = {
+    article,
     canvas,
     downloadLink: article.querySelector(".download-button"),
     cardStatus: article.querySelector(".card-status"),
@@ -707,6 +740,7 @@ async function initialize() {
     for (const company of companies) {
       cardViews.set(company.shortname, createCardView(company));
     }
+    applyCompanySearch();
     await renderAll();
   } catch (error) {
     console.error(error);
@@ -720,5 +754,7 @@ guidesToggle.addEventListener("change", () => {
     setStatus(error.message, "error");
   });
 });
+
+companySearch.addEventListener("input", applyCompanySearch);
 
 initialize();

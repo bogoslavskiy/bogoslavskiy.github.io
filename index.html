@@ -16,7 +16,7 @@
     <meta property="og:type" content="website" />
     <link
       rel="stylesheet"
-      href="/experiments/menu-access-card-html-canvas/styles.css?v=20260730-quality"
+      href="/experiments/menu-access-card-html-canvas/styles.css?v=20260730-search"
     />
   </head>
   <body>
@@ -32,6 +32,18 @@
         </div>
 
         <div class="controls" aria-label="Управление макетом">
+          <label class="company-search">
+            <span>Поиск по компании</span>
+            <input
+              id="company-search"
+              type="search"
+              aria-label="Поиск по компании"
+              aria-describedby="search-results"
+              placeholder="Например, Coffee 232"
+              autocomplete="off"
+            />
+            <small id="search-results" aria-live="polite"></small>
+          </label>
           <label class="checkbox">
             <input id="guides-toggle" type="checkbox" />
             Показать служебные зоны
@@ -48,7 +60,11 @@
         id="cards-list"
         class="cards-list"
         aria-label="Карточки меню"
-      ></section>
+      >
+        <p id="search-empty" class="search-empty" hidden>
+          Компании с таким названием не найдены
+        </p>
+      </section>
 
       <section class="facts" aria-label="Параметры карточек">
         <div>
@@ -72,7 +88,7 @@
 
     <script
       type="module"
-      src="/experiments/menu-access-card-html-canvas/renderer.js?v=20260730-quality"
+      src="/experiments/menu-access-card-html-canvas/renderer.js?v=20260730-search"
     ></script>
   </body>
 </html>
