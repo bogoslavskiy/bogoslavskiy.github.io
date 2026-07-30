@@ -1,7 +1,7 @@
 const CONFIG_URL = "/data/menu-access-card-config.json";
 const OUTPUT_ROOT = "/data/generated/menu-access-cards-v1";
 const PIXELS_PER_METER_300_DPI = 11811;
-const PREVIEW_SCALE = 0.6;
+const PREVIEW_SCALE = 0.8;
 const FALLBACK_LOGO_POSITION = "bottom";
 const LOGO_POSITION_STORAGE_PREFIX = "sigmela-menu-card-logo-position-v2:";
 const LOGO_POSITION_OPTIONS = [
@@ -209,6 +209,8 @@ function roundedRectPath(context, x, y, width, height, radius) {
 function drawCardBackground(context, background) {
   const { width, height, corner_radius: cornerRadius } = cardConfig.canvas;
   context.save();
+  context.imageSmoothingEnabled = true;
+  context.imageSmoothingQuality = "high";
   roundedRectPath(context, 0, 0, width, height, cornerRadius);
   context.clip();
   context.drawImage(background, 0, 0, width, height);
@@ -323,6 +325,9 @@ function drawCompanyLogo(context, logo, position) {
   if (!logo) return;
   const { width } = cardConfig.canvas;
   const { centerY, boxSize } = logoPlacement(position);
+  context.save();
+  context.imageSmoothingEnabled = true;
+  context.imageSmoothingQuality = "high";
   context.drawImage(
     logo,
     width / 2 - boxSize / 2,
@@ -330,6 +335,7 @@ function drawCompanyLogo(context, logo, position) {
     boxSize,
     boxSize,
   );
+  context.restore();
 }
 
 function drawGuides(context, logoPosition) {
