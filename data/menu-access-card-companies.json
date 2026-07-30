@@ -422,7 +422,8 @@
     {
       "name": "Technodöner — белый",
       "shortname": "technodoner_white",
-      "public_shortname": "technodoner"
+      "public_shortname": "technodoner",
+      "target_style": "soft_shadow"
     }
   ]
 }

@@ -290,10 +290,16 @@ function drawTypography(context, textColor) {
   }
 }
 
-function drawTarget(context, centerX) {
+function drawTarget(context, centerX, targetStyle) {
   const { layout, tiles } = cardConfig;
   const left = centerX - layout.tile_size / 2;
   context.save();
+  if (targetStyle === "soft_shadow") {
+    context.shadowColor = tiles.soft_shadow.color;
+    context.shadowBlur = tiles.soft_shadow.blur;
+    context.shadowOffsetX = tiles.soft_shadow.offset_x;
+    context.shadowOffsetY = tiles.soft_shadow.offset_y;
+  }
   roundedRectPath(
     context,
     left + tiles.stroke_width / 2,
@@ -437,6 +443,7 @@ function drawComposition(
   { background, qr, manifest, companyLogo },
   logoPosition,
   guides = false,
+  targetStyle,
 ) {
   const { width, height } = cardConfig.canvas;
   const scaleX = canvas.width / width;
@@ -448,8 +455,8 @@ function drawComposition(
   context.scale(scaleX, scaleY);
   drawCardBackground(context, background);
   drawTypography(context, manifest.text_color);
-  drawTarget(context, cardConfig.layout.left_center_x);
-  drawTarget(context, cardConfig.layout.right_center_x);
+  drawTarget(context, cardConfig.layout.left_center_x, targetStyle);
+  drawTarget(context, cardConfig.layout.right_center_x, targetStyle);
   drawQr(context, qr);
   drawNfc(context);
   drawCompanyLogo(context, companyLogo, logoPosition);
@@ -635,6 +642,8 @@ function createCardView(company) {
         exportCanvas,
         assets,
         normalizeLogoPosition(view.logoPosition),
+        false,
+        company.target_style,
       );
       const exportBlob = await canvasPngAt300Dpi(exportCanvas);
       const exportMetadata = await inspectPngBlob(exportBlob);
@@ -707,7 +716,13 @@ async function renderCard(
     `Собираю Canvas · логотип: ${logoPositionLabel(logoPosition)}…`;
   const assets = await loadCardAssets(company);
   if (isStale()) return;
-  drawComposition(view.canvas, assets, logoPosition, guides);
+  drawComposition(
+    view.canvas,
+    assets,
+    logoPosition,
+    guides,
+    company.target_style,
+  );
   view.downloadLink.setAttribute("aria-disabled", "false");
   const brandPlacement = company.background_contains_brand_signature
     ? "Надпись: в фоне"

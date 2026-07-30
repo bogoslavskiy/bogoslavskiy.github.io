@@ -25,28 +25,28 @@
     ]
   },
   "layout": {
-    "headline_top": 126,
-    "label_top": 294,
-    "label_line_height": 51,
-    "tile_top": 419,
+    "headline_top": 85,
+    "label_top": 274,
+    "label_line_height": 55,
+    "tile_top": 399,
     "tile_size": 403,
     "left_center_x": 366,
     "right_center_x": 1099,
-    "company_logo_center_y": 620.5,
-    "company_logo_box_size": 188,
+    "company_logo_center_y": 600.5,
+    "company_logo_box_size": 220,
     "company_logo_default_position": "bottom",
     "company_logo_positions": {
       "bottom": {
         "center_y": 849,
-        "box_size": 188
+        "box_size": 220
       },
       "center": {
-        "center_y": 620.5,
-        "box_size": 188
+        "center_y": 600.5,
+        "box_size": 220
       },
       "under_headline": {
-        "center_y": 319,
-        "box_size": 188
+        "center_y": 336,
+        "box_size": 220
       }
     },
     "company_logo_safe_margin": 61,
@@ -57,7 +57,7 @@
     "headline_size": 89,
     "headline_weight": 700,
     "headline_letter_spacing": 7,
-    "label_size": 46,
+    "label_size": 50,
     "label_weight": 500,
     "label_letter_spacing": 0
   },
@@ -67,6 +67,13 @@
     "stroke": "#FFFFFF",
     "stroke_width": 0,
     "corner_radius": 55,
-    "qr_size": 303
+    "qr_size": 303,
+    "soft_shadow": {
+      "offset_x": 0,
+      "offset_y": 2,
+      "blur": 25,
+      "spread": 0,
+      "color": "rgba(0, 0, 0, 0.1)"
+    }
   }
 }
