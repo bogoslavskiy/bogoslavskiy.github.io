@@ -414,6 +414,15 @@
     {
       "name": "Колокол",
       "shortname": "kolokol_cafe"
+    },
+    {
+      "name": "Technodöner",
+      "shortname": "technodoner"
+    },
+    {
+      "name": "Technodöner — белый",
+      "shortname": "technodoner_white",
+      "public_shortname": "technodoner"
     }
   ]
 }

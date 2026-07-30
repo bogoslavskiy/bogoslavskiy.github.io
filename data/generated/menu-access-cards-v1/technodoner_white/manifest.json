@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "company": "Technodöner — белый",
+  "shortname": "technodoner_white",
+  "text_color": "#111111",
+  "company_logo": "company-logo.png",
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}
