@@ -2,6 +2,10 @@
   "version": 1,
   "companies": [
     {
+      "name": "Мини",
+      "shortname": "mini.coffee131"
+    },
+    {
       "name": "Sili Coffee",
       "shortname": "sili_coffee"
     },
@@ -300,6 +304,10 @@
     {
       "name": "Огурцы",
       "shortname": "ogurtsinafontanke"
+    },
+    {
+      "name": "Капля",
+      "shortname": "kaplya_coffee.1"
     },
     {
       "name": "Кофевиль",
