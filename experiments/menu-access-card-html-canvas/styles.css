@@ -125,6 +125,7 @@
 }
 
 .canvas-stage {
+  position: relative;
   display: grid;
   width: 100%;
   aspect-ratio: 2800 / 1900;
@@ -139,6 +140,59 @@ canvas {
   max-height: 813px;
   object-fit: contain;
   place-self: center;
+  transition: opacity 160ms ease;
+}
+
+.canvas-stage.is-idle canvas {
+  opacity: 0;
+}
+
+.render-trigger {
+  position: absolute;
+  inset: 7.1428571429%;
+  display: grid;
+  min-height: 0;
+  padding: 24px;
+  border: 1px solid rgba(167, 239, 153, 0.38);
+  border-radius: 14px;
+  place-content: center;
+  gap: 6px;
+  background: rgba(22, 22, 20, 0.9);
+  color: #f4f2ed;
+  cursor: pointer;
+  text-align: center;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.render-trigger:hover {
+  border-color: #a7ef99;
+  background: rgba(30, 31, 27, 0.94);
+}
+
+.render-trigger:focus-visible {
+  outline: 4px solid #a7ef99;
+  outline-offset: -4px;
+}
+
+.render-trigger:disabled {
+  cursor: wait;
+}
+
+.render-trigger[hidden] {
+  display: none;
+}
+
+.render-trigger span {
+  font-size: clamp(18px, 2vw, 28px);
+  font-weight: 850;
+}
+
+.render-trigger small {
+  color: #aaa79f;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .canvas-stage.logo-drag-enabled canvas {
@@ -182,7 +236,9 @@ canvas {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logo-drag-field {
+  .logo-drag-field,
+  canvas,
+  .render-trigger {
     transition: none;
   }
 }

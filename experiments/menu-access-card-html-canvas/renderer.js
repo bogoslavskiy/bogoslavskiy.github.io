@@ -208,22 +208,6 @@ async function loadJson(src) {
   return response.json();
 }
 
-async function generatedCompanies(configuredCompanies) {
-  const candidates = await Promise.all(
-    configuredCompanies.map(async (company) => {
-      try {
-        const manifest = await loadJson(
-          `${OUTPUT_ROOT}/${company.shortname}/manifest.json`,
-        );
-        return manifest.shortname === company.shortname ? company : null;
-      } catch {
-        return null;
-      }
-    }),
-  );
-  return candidates.filter(Boolean);
-}
-
 function canvasFontFamily(value) {
   const genericFamilies = new Set([
     "serif",
@@ -598,6 +582,16 @@ async function inspectPngBlob(blob) {
   return { bytes: bytes.length, width, height, dpiX, dpiY };
 }
 
+function updateRenderStatus() {
+  const renderedCards = [...cardViews.values()].filter(
+    (view) => view.rendered,
+  ).length;
+  const message = renderedCards
+    ? `Отрендерено: ${renderedCards} из ${companies.length} · остальные собираются по клику`
+    : `${companies.length} карточек доступны · нажмите на превью для рендера`;
+  setStatus(message, "ready");
+}
+
 function createCardView(company) {
   const article = document.createElement("article");
   article.className = "preview-card";
@@ -621,11 +615,15 @@ function createCardView(company) {
         <a class="download-button" aria-disabled="true">Скачать PNG · 300 DPI</a>
       </div>
     </div>
-    <div class="canvas-stage">
+    <div class="canvas-stage is-idle">
       <canvas
         width="${Math.round(cardConfig.canvas.width * PREVIEW_SCALE)}"
         height="${Math.round(cardConfig.canvas.height * PREVIEW_SCALE)}"
       ></canvas>
+      <button class="render-trigger" type="button">
+        <span>Собрать карточку</span>
+        <small>Нажмите для рендера</small>
+      </button>
     </div>
   `;
   article.querySelector("h2").textContent = company.name;
@@ -633,6 +631,12 @@ function createCardView(company) {
   canvas.setAttribute(
     "aria-label",
     `Карточка меню ${company.name}, собранная в Canvas`,
+  );
+  canvas.setAttribute("aria-hidden", "true");
+  const renderTrigger = article.querySelector(".render-trigger");
+  renderTrigger.setAttribute(
+    "aria-label",
+    `Собрать карточку меню ${company.name}`,
   );
   const publicShortname = company.public_shortname ?? company.shortname;
   const publicLink = article.querySelector(".public-link");
@@ -670,12 +674,14 @@ function createCardView(company) {
     "aria-label",
     `Двигать логотип ${company.name} по вертикали`,
   );
+  logoDragToggle.disabled = true;
   canvas.tabIndex = -1;
   cardsList.append(article);
   const view = {
     article,
     canvas,
     canvasStage: article.querySelector(".canvas-stage"),
+    renderTrigger,
     downloadLink: article.querySelector(".download-button"),
     cardStatus: article.querySelector(".card-status"),
     logoPositionField,
@@ -689,8 +695,36 @@ function createCardView(company) {
     logoDragFrame: null,
     pendingLogoCenterY: null,
     assets: null,
+    rendered: false,
+    renderPromise: null,
     renderRequest: 0,
   };
+
+  renderTrigger.addEventListener("click", () => {
+    if (view.rendered || view.renderPromise) return;
+    renderTrigger.disabled = true;
+    renderTrigger.querySelector("span").textContent = "Собираю карточку…";
+    view.canvasStage.classList.add("is-rendering");
+    view.renderPromise = renderCard(company, view, renderVersion)
+      .then(() => {
+        view.rendered = true;
+        view.canvasStage.classList.remove("is-idle", "is-rendering");
+        view.canvasStage.classList.add("is-rendered");
+        view.canvas.removeAttribute("aria-hidden");
+        renderTrigger.hidden = true;
+        updateRenderStatus();
+      })
+      .catch((error) => {
+        console.error(error);
+        view.canvasStage.classList.remove("is-rendering");
+        renderTrigger.disabled = false;
+        renderTrigger.querySelector("span").textContent = "Повторить рендер";
+        view.cardStatus.textContent = `Ошибка: ${error.message}`;
+      })
+      .finally(() => {
+        view.renderPromise = null;
+      });
+  });
 
   const pointerPoint = (event) =>
     pointerToCanvasPoint(
@@ -793,6 +827,11 @@ function createCardView(company) {
     logoPositionSelect.value = view.logoPosition;
     saveLogoPosition(company, view.logoPosition);
     saveLogoCenterY(company, view.logoCenterY);
+    if (!view.rendered) {
+      view.cardStatus.textContent =
+        "Позиция сохранена · нажмите на превью для рендера";
+      return;
+    }
     renderCard(company, view, renderVersion).catch((error) => {
       console.error(error);
       view.cardStatus.textContent = `Ошибка: ${error.message}`;
@@ -1028,6 +1067,8 @@ async function renderCard(
       "logo-drag-active",
     );
     view.canvas.tabIndex = -1;
+  } else {
+    view.logoDragToggle.disabled = false;
   }
   drawComposition(
     view.canvas,
@@ -1047,25 +1088,19 @@ async function renderCard(
     brandPlacement;
 }
 
-async function renderAll() {
-  const version = ++renderVersion;
-  setStatus(`Собираю ${companies.length} карточек в Canvas…`);
+function redrawRenderedCards() {
   for (const company of companies) {
-    if (version !== renderVersion) return;
     const view = cardViews.get(company.shortname);
-    try {
-      await renderCard(company, view, version);
-    } catch (error) {
-      view.cardStatus.textContent = `Ошибка: ${error.message}`;
-      throw error;
-    }
+    if (!view?.assets) continue;
+    drawComposition(
+      view.canvas,
+      view.assets,
+      view.logoPosition,
+      view.logoCenterY,
+      guidesToggle.checked,
+      company.target_style,
+    );
   }
-  if (version !== renderVersion) return;
-  setStatus(
-    `${companies.length} карточек готовы · Canvas · PNG ${cardConfig.canvas.width}×${cardConfig.canvas.height} · ` +
-      `${cardConfig.canvas.physical_width_mm}×${cardConfig.canvas.physical_height_mm} мм · 300 DPI`,
-    "ready",
-  );
 }
 
 async function initialize() {
@@ -1076,7 +1111,9 @@ async function initialize() {
       : `/${loadedCardConfig.companies_config}`;
     const companiesConfig = await loadJson(companiesConfigUrl);
     cardConfig = loadedCardConfig;
-    companies = await generatedCompanies(companiesConfig.companies);
+    companies = companiesConfig.companies.filter(
+      (company) => company?.name && company?.shortname,
+    );
     if (companies.length === 0) {
       throw new Error("Нет сгенерированных карточек для Canvas-эксперимента");
     }
@@ -1085,7 +1122,7 @@ async function initialize() {
       cardViews.set(company.shortname, createCardView(company));
     }
     applyCompanySearch();
-    await renderAll();
+    updateRenderStatus();
   } catch (error) {
     console.error(error);
     setStatus(error.message, "error");
@@ -1093,10 +1130,7 @@ async function initialize() {
 }
 
 guidesToggle.addEventListener("change", () => {
-  renderAll().catch((error) => {
-    console.error(error);
-    setStatus(error.message, "error");
-  });
+  redrawRenderedCards();
 });
 
 companySearch.addEventListener("input", applyCompanySearch);
