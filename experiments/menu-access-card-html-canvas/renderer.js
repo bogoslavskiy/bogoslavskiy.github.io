@@ -1,9 +1,18 @@
+import {
+  LOGO_KEYBOARD_LARGE_STEP,
+  LOGO_KEYBOARD_STEP,
+  clampLogoCenterY,
+  pointHitsLogo,
+  pointerToCanvasPoint,
+} from "./logo-drag.js";
+
 const CONFIG_URL = "/data/menu-access-card-config.json";
 const OUTPUT_ROOT = "/data/generated/menu-access-cards-v1";
 const PIXELS_PER_METER_300_DPI = 11811;
 const PREVIEW_SCALE = 0.8;
 const FALLBACK_LOGO_POSITION = "bottom";
 const LOGO_POSITION_STORAGE_PREFIX = "sigmela-menu-card-logo-position-v2:";
+const LOGO_CENTER_Y_STORAGE_PREFIX = "sigmela-menu-card-logo-center-y-v1:";
 const LOGO_POSITION_OPTIONS = [
   { value: "bottom", label: "Снизу" },
   { value: "center", label: "По центру" },
@@ -59,6 +68,10 @@ function applyCompanySearch() {
 
 function logoPositionStorageKey(company) {
   return `${LOGO_POSITION_STORAGE_PREFIX}${company.shortname}`;
+}
+
+function logoCenterYStorageKey(company) {
+  return `${LOGO_CENTER_Y_STORAGE_PREFIX}${company.shortname}`;
 }
 
 function logoPositionLabel(position) {
@@ -124,6 +137,24 @@ function storedLogoPosition(company) {
   }
 }
 
+function storedLogoCenterY(company, position) {
+  const preset = logoPositionPresets()[normalizeLogoPosition(position)];
+  try {
+    const stored = Number.parseFloat(
+      localStorage.getItem(logoCenterYStorageKey(company)),
+    );
+    return Number.isFinite(stored)
+      ? clampLogoCenterY(
+          stored,
+          cardConfig.canvas.height,
+          preset.box_size,
+        )
+      : preset.center_y;
+  } catch {
+    return preset.center_y;
+  }
+}
+
 function saveLogoPosition(company, position) {
   try {
     localStorage.setItem(logoPositionStorageKey(company), position);
@@ -132,14 +163,33 @@ function saveLogoPosition(company, position) {
   }
 }
 
-function logoPlacement(position) {
+function saveLogoCenterY(company, centerY) {
+  try {
+    localStorage.setItem(logoCenterYStorageKey(company), String(centerY));
+  } catch {
+    // Vertical dragging still works for this session without storage.
+  }
+}
+
+function logoPlacement(position, centerY) {
   const normalizedPosition = normalizeLogoPosition(position);
   const preset = logoPositionPresets()[normalizedPosition];
   return {
     position: normalizedPosition,
-    centerY: preset.center_y,
+    centerY: clampLogoCenterY(
+      Number.isFinite(centerY) ? centerY : preset.center_y,
+      cardConfig.canvas.height,
+      preset.box_size,
+    ),
     boxSize: preset.box_size,
   };
+}
+
+function logoPlacementLabelForView(view) {
+  const preset = logoPlacement(view.logoPosition);
+  return Math.abs(preset.centerY - view.logoCenterY) < 0.5
+    ? logoPositionLabel(view.logoPosition)
+    : `Вручную · Y ${Math.round(view.logoCenterY)}`;
 }
 
 function loadImage(src) {
@@ -359,30 +409,30 @@ function drawNfc(context) {
   context.restore();
 }
 
-function drawCompanyLogo(context, logo, position) {
+function drawCompanyLogo(context, logo, position, centerY) {
   if (!logo) return;
   const { width } = cardConfig.canvas;
-  const { centerY, boxSize } = logoPlacement(position);
+  const placement = logoPlacement(position, centerY);
   context.save();
   context.imageSmoothingEnabled = true;
   context.imageSmoothingQuality = "high";
   context.drawImage(
     logo,
-    width / 2 - boxSize / 2,
-    centerY - boxSize / 2,
-    boxSize,
-    boxSize,
+    width / 2 - placement.boxSize / 2,
+    placement.centerY - placement.boxSize / 2,
+    placement.boxSize,
+    placement.boxSize,
   );
   context.restore();
 }
 
-function drawGuides(context, logoPosition) {
+function drawGuides(context, logoPosition, requestedLogoCenterY) {
   const { width, height } = cardConfig.canvas;
   const { layout, typography } = cardConfig;
   const tileLeft = layout.left_center_x - layout.tile_size / 2;
   const tileRight = layout.right_center_x - layout.tile_size / 2;
   const { centerY: logoCenterY, boxSize: logoBoxSize } =
-    logoPlacement(logoPosition);
+    logoPlacement(logoPosition, requestedLogoCenterY);
 
   context.save();
   context.setLineDash([18, 14]);
@@ -442,6 +492,7 @@ function drawComposition(
   canvas,
   { background, qr, manifest, companyLogo },
   logoPosition,
+  logoCenterY,
   guides = false,
   targetStyle,
 ) {
@@ -459,8 +510,8 @@ function drawComposition(
   drawTarget(context, cardConfig.layout.right_center_x, targetStyle);
   drawQr(context, qr);
   drawNfc(context);
-  drawCompanyLogo(context, companyLogo, logoPosition);
-  if (guides) drawGuides(context, logoPosition);
+  drawCompanyLogo(context, companyLogo, logoPosition, logoCenterY);
+  if (guides) drawGuides(context, logoPosition, logoCenterY);
   context.restore();
 }
 
@@ -562,6 +613,10 @@ function createCardView(company) {
           <span>Позиция логотипа</span>
           <select class="logo-position-select"></select>
         </label>
+        <label class="logo-drag-field checkbox">
+          <input class="logo-drag-toggle" type="checkbox" />
+          <span>Двигать логотип</span>
+        </label>
         <a class="public-link" target="_blank" rel="noreferrer"></a>
         <a class="download-button" aria-disabled="true">Скачать PNG · 300 DPI</a>
       </div>
@@ -584,13 +639,17 @@ function createCardView(company) {
   publicLink.href = `https://sigmela.ru/${publicShortname}`;
   publicLink.textContent = `sigmela.ru/${publicShortname}`;
   const logoPositionField = article.querySelector(".logo-position-field");
+  const logoDragField = article.querySelector(".logo-drag-field");
   logoPositionField.hidden = Boolean(
     company.background_contains_brand_signature,
   );
   if (company.background_contains_brand_signature) {
     logoPositionField.style.display = "none";
+    logoDragField.hidden = true;
+    logoDragField.style.display = "none";
   }
   const logoPositionSelect = article.querySelector(".logo-position-select");
+  const logoDragToggle = article.querySelector(".logo-drag-toggle");
   for (const optionDefinition of LOGO_POSITION_OPTIONS) {
     const option = document.createElement("option");
     option.value = optionDefinition.value;
@@ -598,31 +657,271 @@ function createCardView(company) {
     logoPositionSelect.append(option);
   }
   const initialLogoPosition = storedLogoPosition(company);
+  const initialLogoCenterY = storedLogoCenterY(
+    company,
+    initialLogoPosition,
+  );
   logoPositionSelect.value = initialLogoPosition;
   logoPositionSelect.setAttribute(
     "aria-label",
     `Позиция логотипа для ${company.name}`,
   );
+  logoDragToggle.setAttribute(
+    "aria-label",
+    `Двигать логотип ${company.name} по вертикали`,
+  );
+  canvas.tabIndex = -1;
   cardsList.append(article);
   const view = {
     article,
     canvas,
+    canvasStage: article.querySelector(".canvas-stage"),
     downloadLink: article.querySelector(".download-button"),
     cardStatus: article.querySelector(".card-status"),
     logoPositionField,
     logoPositionSelect,
+    logoDragField,
+    logoDragToggle,
     logoPosition: initialLogoPosition,
+    logoCenterY: initialLogoCenterY,
+    logoDragEnabled: false,
+    logoDragState: null,
+    logoDragFrame: null,
+    pendingLogoCenterY: null,
+    assets: null,
     renderRequest: 0,
   };
 
-  logoPositionSelect.addEventListener("change", () => {
-    view.logoPosition = normalizeLogoPosition(logoPositionSelect.value);
-    logoPositionSelect.value = view.logoPosition;
-    saveLogoPosition(company, view.logoPosition);
+  const pointerPoint = (event) =>
+    pointerToCanvasPoint(
+      event.clientX,
+      event.clientY,
+      canvas.getBoundingClientRect(),
+      cardConfig.canvas.width,
+      cardConfig.canvas.height,
+    );
+
+  const redrawPreview = () => {
+    if (!view.assets) return;
+    drawComposition(
+      view.canvas,
+      view.assets,
+      view.logoPosition,
+      view.logoCenterY,
+      guidesToggle.checked,
+      company.target_style,
+    );
+  };
+
+  const setHoverState = (event) => {
+    if (
+      !view.logoDragEnabled ||
+      !view.assets?.companyLogo ||
+      view.logoDragState
+    ) {
+      view.canvasStage.classList.remove("logo-drag-hover");
+      return;
+    }
+    const placement = logoPlacement(
+      view.logoPosition,
+      view.logoCenterY,
+    );
+    view.canvasStage.classList.toggle(
+      "logo-drag-hover",
+      pointHitsLogo(
+        pointerPoint(event),
+        cardConfig.canvas.width,
+        placement.centerY,
+        placement.boxSize,
+      ),
+    );
+  };
+
+  const flushLogoDragFrame = () => {
+    if (view.logoDragFrame !== null) {
+      cancelAnimationFrame(view.logoDragFrame);
+      view.logoDragFrame = null;
+    }
+    if (view.pendingLogoCenterY !== null) {
+      view.logoCenterY = view.pendingLogoCenterY;
+      view.pendingLogoCenterY = null;
+      redrawPreview();
+    }
+  };
+
+  const scheduleLogoCenterY = (centerY) => {
+    view.pendingLogoCenterY = centerY;
+    if (view.logoDragFrame !== null) return;
+    view.logoDragFrame = requestAnimationFrame(() => {
+      view.logoDragFrame = null;
+      view.logoCenterY = view.pendingLogoCenterY;
+      view.pendingLogoCenterY = null;
+      redrawPreview();
+      view.cardStatus.textContent =
+        `Логотип: вручную · Y ${Math.round(view.logoCenterY)}`;
+    });
+  };
+
+  const commitLogoCenterY = () => {
+    flushLogoDragFrame();
+    saveLogoCenterY(company, view.logoCenterY);
     renderCard(company, view, renderVersion).catch((error) => {
       console.error(error);
       view.cardStatus.textContent = `Ошибка: ${error.message}`;
     });
+  };
+
+  const finishLogoDrag = (event, cancelled = false) => {
+    const drag = view.logoDragState;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    flushLogoDragFrame();
+    if (cancelled) {
+      view.logoCenterY = drag.startingCenterY;
+      redrawPreview();
+    }
+    view.logoDragState = null;
+    view.canvasStage.classList.remove("logo-drag-active");
+    if (canvas.hasPointerCapture(event.pointerId)) {
+      canvas.releasePointerCapture(event.pointerId);
+    }
+    commitLogoCenterY();
+  };
+
+  logoPositionSelect.addEventListener("change", () => {
+    view.logoPosition = normalizeLogoPosition(logoPositionSelect.value);
+    view.logoCenterY = logoPlacement(view.logoPosition).centerY;
+    logoPositionSelect.value = view.logoPosition;
+    saveLogoPosition(company, view.logoPosition);
+    saveLogoCenterY(company, view.logoCenterY);
+    renderCard(company, view, renderVersion).catch((error) => {
+      console.error(error);
+      view.cardStatus.textContent = `Ошибка: ${error.message}`;
+    });
+  });
+
+  logoDragToggle.addEventListener("change", () => {
+    view.logoDragEnabled = logoDragToggle.checked;
+    view.canvasStage.classList.toggle(
+      "logo-drag-enabled",
+      view.logoDragEnabled,
+    );
+    canvas.tabIndex = view.logoDragEnabled ? 0 : -1;
+    canvas.setAttribute(
+      "aria-label",
+      view.logoDragEnabled
+        ? `Карточка ${company.name}. Перетаскивайте логотип только вверх и вниз или используйте стрелки.`
+        : `Карточка меню ${company.name}, собранная в Canvas`,
+    );
+    if (!view.logoDragEnabled) {
+      view.canvasStage.classList.remove(
+        "logo-drag-hover",
+        "logo-drag-active",
+      );
+    }
+    view.cardStatus.textContent = view.logoDragEnabled
+      ? "Режим перемещения включён · тяните логотип вверх-вниз"
+      : `Логотип: ${logoPlacementLabelForView(view)}`;
+  });
+
+  canvas.addEventListener("pointerdown", (event) => {
+    if (
+      !view.logoDragEnabled ||
+      !view.assets?.companyLogo ||
+      (event.pointerType === "mouse" && event.button !== 0)
+    ) {
+      return;
+    }
+    const placement = logoPlacement(
+      view.logoPosition,
+      view.logoCenterY,
+    );
+    const point = pointerPoint(event);
+    if (
+      !pointHitsLogo(
+        point,
+        cardConfig.canvas.width,
+        placement.centerY,
+        placement.boxSize,
+      )
+    ) {
+      return;
+    }
+    event.preventDefault();
+    canvas.focus({ preventScroll: true });
+    canvas.setPointerCapture(event.pointerId);
+    view.logoDragState = {
+      pointerId: event.pointerId,
+      grabOffsetY: point.y - placement.centerY,
+      startingCenterY: placement.centerY,
+    };
+    view.canvasStage.classList.remove("logo-drag-hover");
+    view.canvasStage.classList.add("logo-drag-active");
+    view.downloadLink.setAttribute("aria-disabled", "true");
+    view.cardStatus.textContent =
+      `Перемещение · Y ${Math.round(placement.centerY)}`;
+  });
+
+  canvas.addEventListener("pointermove", (event) => {
+    const drag = view.logoDragState;
+    if (!drag || drag.pointerId !== event.pointerId) {
+      setHoverState(event);
+      return;
+    }
+    event.preventDefault();
+    const placement = logoPlacement(
+      view.logoPosition,
+      view.logoCenterY,
+    );
+    const centerY = clampLogoCenterY(
+      pointerPoint(event).y - drag.grabOffsetY,
+      cardConfig.canvas.height,
+      placement.boxSize,
+    );
+    scheduleLogoCenterY(centerY);
+  });
+
+  canvas.addEventListener("pointerup", (event) => {
+    finishLogoDrag(event);
+  });
+
+  canvas.addEventListener("pointercancel", (event) => {
+    finishLogoDrag(event, true);
+  });
+
+  canvas.addEventListener("pointerleave", () => {
+    if (!view.logoDragState) {
+      view.canvasStage.classList.remove("logo-drag-hover");
+    }
+  });
+
+  canvas.addEventListener("keydown", (event) => {
+    if (!view.logoDragEnabled || !view.assets?.companyLogo) return;
+    if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+    event.preventDefault();
+    const placement = logoPlacement(
+      view.logoPosition,
+      view.logoCenterY,
+    );
+    const step = event.shiftKey
+      ? LOGO_KEYBOARD_LARGE_STEP
+      : LOGO_KEYBOARD_STEP;
+    const direction = event.key === "ArrowUp" ? -1 : 1;
+    view.logoCenterY = clampLogoCenterY(
+      placement.centerY + direction * step,
+      cardConfig.canvas.height,
+      placement.boxSize,
+    );
+    saveLogoCenterY(company, view.logoCenterY);
+    view.downloadLink.setAttribute("aria-disabled", "true");
+    redrawPreview();
+    view.cardStatus.textContent =
+      `Логотип: вручную · Y ${Math.round(view.logoCenterY)}`;
+  });
+
+  canvas.addEventListener("keyup", (event) => {
+    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+      commitLogoCenterY();
+    }
   });
 
   view.downloadLink.addEventListener("click", async (event) => {
@@ -634,7 +933,8 @@ function createCardView(company) {
       `Готовлю PNG ${cardConfig.canvas.width}×${cardConfig.canvas.height} · ` +
       `${cardConfig.canvas.physical_width_mm}×${cardConfig.canvas.physical_height_mm} мм · 300 DPI…`;
     try {
-      const assets = await loadCardAssets(company);
+      const assets = view.assets ?? (await loadCardAssets(company));
+      view.assets = assets;
       const exportCanvas = document.createElement("canvas");
       exportCanvas.width = cardConfig.canvas.width;
       exportCanvas.height = cardConfig.canvas.height;
@@ -642,6 +942,7 @@ function createCardView(company) {
         exportCanvas,
         assets,
         normalizeLogoPosition(view.logoPosition),
+        view.logoCenterY,
         false,
         company.target_style,
       );
@@ -663,7 +964,7 @@ function createCardView(company) {
       window.setTimeout(() => URL.revokeObjectURL(exportUrl), 30_000);
       const brandPlacement = company.background_contains_brand_signature
         ? "Надпись: в фоне"
-        : `Логотип: ${logoPositionLabel(view.logoPosition)}`;
+        : `Логотип: ${logoPlacementLabelForView(view)}`;
       view.cardStatus.textContent =
         `PNG готов · ${exportMetadata.width}×${exportMetadata.height} · ` +
         `${exportMetadata.dpiX} DPI · ${brandPlacement}`;
@@ -713,20 +1014,33 @@ async function renderCard(
     version !== renderVersion || request !== view.renderRequest;
   view.downloadLink.setAttribute("aria-disabled", "true");
   view.cardStatus.textContent =
-    `Собираю Canvas · логотип: ${logoPositionLabel(logoPosition)}…`;
-  const assets = await loadCardAssets(company);
+    `Собираю Canvas · логотип: ${logoPlacementLabelForView(view)}…`;
+  const assets = view.assets ?? (await loadCardAssets(company));
   if (isStale()) return;
+  view.assets = assets;
+  if (!assets.companyLogo) {
+    view.logoDragToggle.checked = false;
+    view.logoDragToggle.disabled = true;
+    view.logoDragEnabled = false;
+    view.canvasStage.classList.remove(
+      "logo-drag-enabled",
+      "logo-drag-hover",
+      "logo-drag-active",
+    );
+    view.canvas.tabIndex = -1;
+  }
   drawComposition(
     view.canvas,
     assets,
     logoPosition,
+    view.logoCenterY,
     guides,
     company.target_style,
   );
   view.downloadLink.setAttribute("aria-disabled", "false");
   const brandPlacement = company.background_contains_brand_signature
     ? "Надпись: в фоне"
-    : `Логотип: ${logoPositionLabel(logoPosition)}`;
+    : `Логотип: ${logoPlacementLabelForView(view)}`;
   view.cardStatus.textContent =
     `Предпросмотр готов · экспорт ${cardConfig.canvas.width}×${cardConfig.canvas.height} · ` +
     `${cardConfig.canvas.physical_width_mm}×${cardConfig.canvas.physical_height_mm} мм · 300 DPI · ` +

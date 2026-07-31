@@ -80,6 +80,31 @@
   text-transform: none;
 }
 
+.logo-drag-field {
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid #3a3935;
+  border-radius: 12px;
+  background: #1b1b19;
+  color: #cbc8c0;
+  font-size: 13px;
+  font-weight: 750;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.logo-drag-field:has(input:checked) {
+  border-color: #a7ef99;
+  background: rgba(167, 239, 153, 0.1);
+  color: #d9ffd2;
+}
+
+.logo-drag-field:has(input:disabled) {
+  display: none;
+}
+
 .card-actions .download-button {
   min-height: 40px;
   padding-inline: 14px;
@@ -116,6 +141,24 @@ canvas {
   place-self: center;
 }
 
+.canvas-stage.logo-drag-enabled canvas {
+  touch-action: none;
+  user-select: none;
+}
+
+.canvas-stage.logo-drag-hover canvas {
+  cursor: grab;
+}
+
+.canvas-stage.logo-drag-active canvas {
+  cursor: grabbing;
+}
+
+.canvas-stage.logo-drag-enabled canvas:focus-visible {
+  outline: 4px solid #a7ef99;
+  outline-offset: -4px;
+}
+
 @media (max-width: 720px) {
   .preview-heading,
   .card-actions {
@@ -132,7 +175,14 @@ canvas {
   }
 
   .logo-position-field,
-  .logo-position-select {
+  .logo-position-select,
+  .logo-drag-field {
     width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-drag-field {
+    transition: none;
   }
 }
