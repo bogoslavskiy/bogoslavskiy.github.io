@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "company": "ТЧК",
+  "shortname": "coffee.tchk.spb",
+  "text_color": "#111111",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "light_halo",
+    "color": "#FFFFFF",
+    "opacity": 0.82,
+    "blur": 5,
+    "sample_count": 17225,
+    "observed_p10_ratio": 1.28,
+    "observed_median_ratio": 1.77,
+    "protected_p10_ratio": 1.41,
+    "protected_median_ratio": 7.15,
+    "minimum_median_ratio": 3
+  },
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}

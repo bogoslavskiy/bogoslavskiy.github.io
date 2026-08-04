@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "company": "Bazar Street Food",
+  "shortname": "bazar_street_food",
+  "text_color": "#FFFFFF",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "none",
+    "color": null,
+    "opacity": 0,
+    "blur": 0,
+    "sample_count": 27000,
+    "observed_p10_ratio": 10.12,
+    "observed_median_ratio": 10.34,
+    "protected_p10_ratio": 10.12,
+    "protected_median_ratio": 10.34,
+    "minimum_median_ratio": 3
+  },
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}

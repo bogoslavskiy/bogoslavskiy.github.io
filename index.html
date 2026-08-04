@@ -28,7 +28,8 @@
           <p class="intro">
             Нажмите на превью нужной карточки, чтобы собрать только её. После
             рендера выберите положение или включите вертикальное перемещение
-            логотипа и скачайте PNG 1465×1016 для печати 124×86 мм.
+            логотипа и скачайте PNG 1465×1016 для печати 124×86 мм. Все
+            карточки можно скачать одним многостраничным PDF.
           </p>
         </div>
 
@@ -49,6 +50,18 @@
             <input id="guides-toggle" type="checkbox" />
             Показать служебные зоны
           </label>
+          <label class="checkbox">
+            <input id="printed-toggle" type="checkbox" />
+            Скрыть напечатанные
+          </label>
+          <a
+            id="download-all-pdf"
+            class="download-all-button"
+            href="/downloads/sigmela-menu-cards-all.pdf"
+            download
+          >
+            Скачать ненапечатанные карточки PDF
+          </a>
         </div>
       </header>
 
@@ -82,14 +95,14 @@
         </div>
         <div>
           <span>Экспорт</span>
-          <strong>PNG, 1465×1016, 124×86 мм, 300 DPI</strong>
+          <strong>PNG по одной · PDF со всеми карточками</strong>
         </div>
       </section>
     </main>
 
     <script
       type="module"
-      src="/experiments/menu-access-card-html-canvas/renderer.js?v=20260731-lazy-render-v1"
+      src="/experiments/menu-access-card-html-canvas/renderer.js?v=20260801-gpt-background-pilot-v1"
     ></script>
   </body>
 </html>

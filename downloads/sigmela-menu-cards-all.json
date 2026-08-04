@@ -1,0 +1,1464 @@
+{
+  "version": 1,
+  "file": "sigmela-menu-cards-all.pdf",
+  "pages": 287,
+  "bytes": 37231052,
+  "sha256": "0c9885fc61835e06e29c89607b40a27f428b11b67303cfa651480cbd08854ccf",
+  "page_width_mm": 124,
+  "page_height_mm": 86,
+  "jpeg_quality": 90,
+  "source_cards": 300,
+  "excluded_printed": 13,
+  "printed_shortnames": [
+    "mini.coffee131",
+    "sili_coffee",
+    "sloy.bakery",
+    "cff232.spb",
+    "kenycoffeee",
+    "hi.buni",
+    "dizengof99.spb",
+    "svetcafee",
+    "kaplya_coffee",
+    "u_larisy_carpet",
+    "kolokol_cafe",
+    "technodoner",
+    "technodoner_white"
+  ],
+  "cards": [
+    {
+      "page": 1,
+      "name": "Shaka Coffee",
+      "shortname": "shakacoffeespb"
+    },
+    {
+      "page": 2,
+      "name": "Eggselent",
+      "shortname": "eggselent"
+    },
+    {
+      "page": 3,
+      "name": "Cookushka",
+      "shortname": "cookushka"
+    },
+    {
+      "page": 4,
+      "name": "Sip Coffee",
+      "shortname": "sip"
+    },
+    {
+      "page": 5,
+      "name": "Биография",
+      "shortname": "biography_coffee"
+    },
+    {
+      "page": 6,
+      "name": "Amazing Cacao",
+      "shortname": "amazingcacao"
+    },
+    {
+      "page": 7,
+      "name": "Кофе в доме",
+      "shortname": "kofe_v_dome"
+    },
+    {
+      "page": 8,
+      "name": "CO&LO",
+      "shortname": "coffeeandlo"
+    },
+    {
+      "page": 9,
+      "name": "Event Coffeebar",
+      "shortname": "event_coffeebar"
+    },
+    {
+      "page": 10,
+      "name": "Мечтатели",
+      "shortname": "followdreamers"
+    },
+    {
+      "page": 11,
+      "name": "Bolshecoffee Roasters",
+      "shortname": "bolshecoffeeroasters"
+    },
+    {
+      "page": 12,
+      "name": "8:am",
+      "shortname": "8am_spb"
+    },
+    {
+      "page": 13,
+      "name": "Завтра",
+      "shortname": "zavtra_coffee"
+    },
+    {
+      "page": 14,
+      "name": "Omni brew",
+      "shortname": "omnibrew.spb"
+    },
+    {
+      "page": 15,
+      "name": "Lu. Co. P. S.",
+      "shortname": "ludicoffee"
+    },
+    {
+      "page": 16,
+      "name": "Capi",
+      "shortname": "capi.coffeeshop"
+    },
+    {
+      "page": 17,
+      "name": "Марква",
+      "shortname": "markva_cake"
+    },
+    {
+      "page": 18,
+      "name": "Wolee",
+      "shortname": "mrwolee"
+    },
+    {
+      "page": 19,
+      "name": "Keisvi coffee",
+      "shortname": "keisvi.coffee"
+    },
+    {
+      "page": 20,
+      "name": "Ohaüs",
+      "shortname": "oha.u.s"
+    },
+    {
+      "page": 21,
+      "name": "Pulse Coffee",
+      "shortname": "pulse.spb"
+    },
+    {
+      "page": 22,
+      "name": "mere",
+      "shortname": "mere.everyday"
+    },
+    {
+      "page": 23,
+      "name": "Café Alto",
+      "shortname": "cafealto"
+    },
+    {
+      "page": 24,
+      "name": "Гуща Событий",
+      "shortname": "gushcha.sobytij"
+    },
+    {
+      "page": 25,
+      "name": "Трубочерия",
+      "shortname": "trubocheriya"
+    },
+    {
+      "page": 26,
+      "name": "Кафе Старт",
+      "shortname": "start.kafe"
+    },
+    {
+      "page": 27,
+      "name": "Kona",
+      "shortname": "kona_spb"
+    },
+    {
+      "page": 28,
+      "name": "Kos.place",
+      "shortname": "kos.place"
+    },
+    {
+      "page": 29,
+      "name": "Good Boy Coffee",
+      "shortname": "goodboycoffee.spb"
+    },
+    {
+      "page": 30,
+      "name": "Babka Kitchen",
+      "shortname": "babka.kitchen"
+    },
+    {
+      "page": 31,
+      "name": "Департамент кофе",
+      "shortname": "coffee_department"
+    },
+    {
+      "page": 32,
+      "name": "Переговорная",
+      "shortname": "prgvrn"
+    },
+    {
+      "page": 33,
+      "name": "Кусь",
+      "shortname": "kus.cafe"
+    },
+    {
+      "page": 34,
+      "name": "Текстура",
+      "shortname": "teksturabakery"
+    },
+    {
+      "page": 35,
+      "name": "Aster Bakery",
+      "shortname": "hello.aster"
+    },
+    {
+      "page": 36,
+      "name": "Ôpetit Friedlander",
+      "shortname": "o_petit"
+    },
+    {
+      "page": 37,
+      "name": "Нотик",
+      "shortname": "notik.gastro"
+    },
+    {
+      "page": 38,
+      "name": "Tour Coffee",
+      "shortname": "tour.coffeebar"
+    },
+    {
+      "page": 39,
+      "name": "Paradox x YNGЯНГ",
+      "shortname": "paradoxbookshop"
+    },
+    {
+      "page": 40,
+      "name": "Temple.Coffee",
+      "shortname": "temple.coffee"
+    },
+    {
+      "page": 41,
+      "name": "Mad Espresso Team",
+      "shortname": "madespressoteam"
+    },
+    {
+      "page": 42,
+      "name": "5июня",
+      "shortname": "5junecafe"
+    },
+    {
+      "page": 43,
+      "name": "ABC Coffee Roasters",
+      "shortname": "abc.roasters"
+    },
+    {
+      "page": 44,
+      "name": "Sibaristica",
+      "shortname": "sibaristica"
+    },
+    {
+      "page": 45,
+      "name": "Tipa Coffee",
+      "shortname": "tipa.coffee"
+    },
+    {
+      "page": 46,
+      "name": "Carpaccio",
+      "shortname": "carpaccio_coffee"
+    },
+    {
+      "page": 47,
+      "name": "24/42",
+      "shortname": "2442_cafe"
+    },
+    {
+      "page": 48,
+      "name": "Объект",
+      "shortname": "object.coffee"
+    },
+    {
+      "page": 49,
+      "name": "VID Coffee",
+      "shortname": "vid.coffee.spb"
+    },
+    {
+      "page": 50,
+      "name": "Casimir Coffee",
+      "shortname": "casimir_coffee"
+    },
+    {
+      "page": 51,
+      "name": "Skuratov",
+      "shortname": "skuratovcoffee"
+    },
+    {
+      "page": 52,
+      "name": "Veli",
+      "shortname": "veli.cafe"
+    },
+    {
+      "page": 53,
+      "name": "LUCHI",
+      "shortname": "luchi.spb"
+    },
+    {
+      "page": 54,
+      "name": "Страсти",
+      "shortname": "strasticoffee"
+    },
+    {
+      "page": 55,
+      "name": "Перед прочтением сжечь",
+      "shortname": "peredp_books"
+    },
+    {
+      "page": 56,
+      "name": "Кофейное место",
+      "shortname": "kofeinoye_mesto"
+    },
+    {
+      "page": 57,
+      "name": "Lavanda Eclair",
+      "shortname": "lavandaeclair"
+    },
+    {
+      "page": 58,
+      "name": "Lu.Co. Local",
+      "shortname": "ludicoffee-4255"
+    },
+    {
+      "page": 59,
+      "name": "Pa Pa Power",
+      "shortname": "papapowercoffee"
+    },
+    {
+      "page": 60,
+      "name": "Карравонг",
+      "shortname": "karrawong"
+    },
+    {
+      "page": 61,
+      "name": "Bolshecoffee",
+      "shortname": "bolshecoffeeroasters.yard"
+    },
+    {
+      "page": 62,
+      "name": "OLMENCH",
+      "shortname": "olmench.spb"
+    },
+    {
+      "page": 63,
+      "name": "Пижама Бистро",
+      "shortname": "pajama.rest"
+    },
+    {
+      "page": 64,
+      "name": "Lines",
+      "shortname": "lines.bistro"
+    },
+    {
+      "page": 65,
+      "name": "Стрелка",
+      "shortname": "strelka.coffee"
+    },
+    {
+      "page": 66,
+      "name": "Институт",
+      "shortname": "institut_coffee"
+    },
+    {
+      "page": 67,
+      "name": "Огурцы",
+      "shortname": "ogurtsinafontanke"
+    },
+    {
+      "page": 68,
+      "name": "Капля",
+      "shortname": "kaplya_coffee.1"
+    },
+    {
+      "page": 69,
+      "name": "Кофевиль",
+      "shortname": "kofevil"
+    },
+    {
+      "page": 70,
+      "name": "Fort Brew",
+      "shortname": "fort_brew"
+    },
+    {
+      "page": 71,
+      "name": "Свитер",
+      "shortname": "sweeter_indapiter"
+    },
+    {
+      "page": 72,
+      "name": "Ходят слухи",
+      "shortname": "hodyat_slyhi_spb"
+    },
+    {
+      "page": 73,
+      "name": "We Want More",
+      "shortname": "wewantmore_spb"
+    },
+    {
+      "page": 74,
+      "name": "Academia Cafe",
+      "shortname": "academia_cafe"
+    },
+    {
+      "page": 75,
+      "name": "КБТ",
+      "shortname": "kbt.spb"
+    },
+    {
+      "page": 76,
+      "name": "Alex Coffee",
+      "shortname": "alexcoffee_murino"
+    },
+    {
+      "page": 77,
+      "name": "Спасибо/пожалуйста",
+      "shortname": "thxyourewelcome"
+    },
+    {
+      "page": 78,
+      "name": "Спэшл",
+      "shortname": "speshl.coffee"
+    },
+    {
+      "page": 79,
+      "name": "greenWich",
+      "shortname": "greenwich_spb"
+    },
+    {
+      "page": 80,
+      "name": "7a.m.",
+      "shortname": "7.am.pm"
+    },
+    {
+      "page": 81,
+      "name": "Центроварка",
+      "shortname": "centrovarka"
+    },
+    {
+      "page": 82,
+      "name": "День Хлеба",
+      "shortname": "the.breadday"
+    },
+    {
+      "page": 83,
+      "name": "Mart",
+      "shortname": "coffee.mart"
+    },
+    {
+      "page": 84,
+      "name": "Мера кофе",
+      "shortname": "mera_coffee_mera"
+    },
+    {
+      "page": 85,
+      "name": "Civil Coffee",
+      "shortname": "civil.coffeebar"
+    },
+    {
+      "page": 86,
+      "name": "Вираж",
+      "shortname": "virage_cooperative"
+    },
+    {
+      "page": 87,
+      "name": "Будем знакомы",
+      "shortname": "budem.znakomy.coffee"
+    },
+    {
+      "page": 88,
+      "name": "Communa",
+      "shortname": "communacoffee"
+    },
+    {
+      "page": 89,
+      "name": "Kafema",
+      "shortname": "kafemaspb"
+    },
+    {
+      "page": 90,
+      "name": "Hustle House",
+      "shortname": "hustlehousecoffee"
+    },
+    {
+      "page": 91,
+      "name": "Мука",
+      "shortname": "mukacafe"
+    },
+    {
+      "page": 92,
+      "name": "Парадная",
+      "shortname": "paradnayaspb"
+    },
+    {
+      "page": 93,
+      "name": "Sight",
+      "shortname": "sightcoffeedine"
+    },
+    {
+      "page": 94,
+      "name": "У Ларисы",
+      "shortname": "u_larisy"
+    },
+    {
+      "page": 95,
+      "name": "Sip Coffee",
+      "shortname": "sipcoffee.spb"
+    },
+    {
+      "page": 96,
+      "name": "No:am",
+      "shortname": "noambistro"
+    },
+    {
+      "page": 97,
+      "name": "POID 1894",
+      "shortname": "poid1894"
+    },
+    {
+      "page": 98,
+      "name": "Эспрессо Тони",
+      "shortname": "_espressotony_"
+    },
+    {
+      "page": 99,
+      "name": "СЁРКЛ",
+      "shortname": "circlekofe"
+    },
+    {
+      "page": 100,
+      "name": "БЭНЧ",
+      "shortname": "benchplace"
+    },
+    {
+      "page": 101,
+      "name": "M-ELEVEN",
+      "shortname": "m11.jewelry"
+    },
+    {
+      "page": 102,
+      "name": "Крокодил моей души",
+      "shortname": "krokodil_coffee"
+    },
+    {
+      "page": 103,
+      "name": "Сейф",
+      "shortname": "safecoffee.spb"
+    },
+    {
+      "page": 104,
+      "name": "Кофе и Приятности",
+      "shortname": "coofep"
+    },
+    {
+      "page": 105,
+      "name": "Круч",
+      "shortname": "kruch.cafe"
+    },
+    {
+      "page": 106,
+      "name": "Кофеточка Friend Function",
+      "shortname": "friendfunction"
+    },
+    {
+      "page": 107,
+      "name": "Знать Кофе",
+      "shortname": "aware_coffee"
+    },
+    {
+      "page": 108,
+      "name": "Forget Me Not coffee",
+      "shortname": "forgetmenot_coffee"
+    },
+    {
+      "page": 109,
+      "name": "Café Alto",
+      "shortname": "cafealto__"
+    },
+    {
+      "page": 110,
+      "name": "Культура общения",
+      "shortname": "kultura_obshcheniya"
+    },
+    {
+      "page": 111,
+      "name": "Luka coffee",
+      "shortname": "luka_coffee_spb"
+    },
+    {
+      "page": 112,
+      "name": "Кактус",
+      "shortname": "cactus_coffee_spb"
+    },
+    {
+      "page": 113,
+      "name": "Burry Cakes",
+      "shortname": "burrycakes"
+    },
+    {
+      "page": 114,
+      "name": "Текстура",
+      "shortname": "teksturabakery.1"
+    },
+    {
+      "page": 115,
+      "name": "Sip Coffee",
+      "shortname": "sipcoffee.spb.1"
+    },
+    {
+      "page": 116,
+      "name": "Медовик",
+      "shortname": "medovik"
+    },
+    {
+      "page": 117,
+      "name": "Нарезной",
+      "shortname": "nareznoy_shop"
+    },
+    {
+      "page": 118,
+      "name": "Eggselent",
+      "shortname": "eggsellent.ru"
+    },
+    {
+      "page": 119,
+      "name": "Temple.Coffee",
+      "shortname": "temple.coffee.1"
+    },
+    {
+      "page": 120,
+      "name": "Meren Coffee",
+      "shortname": "meren_coffee"
+    },
+    {
+      "page": 121,
+      "name": "Salty",
+      "shortname": "salty.bistro"
+    },
+    {
+      "page": 122,
+      "name": "Кофе друг человека",
+      "shortname": "kofe_drug_cheloveka"
+    },
+    {
+      "page": 123,
+      "name": "Co-op 8s",
+      "shortname": "coop_8s"
+    },
+    {
+      "page": 124,
+      "name": "Koffe.vo",
+      "shortname": "koffe.vo"
+    },
+    {
+      "page": 125,
+      "name": "24/42",
+      "shortname": "2442cafe"
+    },
+    {
+      "page": 126,
+      "name": "Мечта",
+      "shortname": "mechta.cafe"
+    },
+    {
+      "page": 127,
+      "name": "Кусь",
+      "shortname": "kus.cafe.1"
+    },
+    {
+      "page": 128,
+      "name": "КПК",
+      "shortname": "kpk_spb"
+    },
+    {
+      "page": 129,
+      "name": "Gotcha!",
+      "shortname": "gotcha.brewbar"
+    },
+    {
+      "page": 130,
+      "name": "AVCD",
+      "shortname": "avcd.coffee"
+    },
+    {
+      "page": 131,
+      "name": "Casimir",
+      "shortname": "casimir_coffee.1"
+    },
+    {
+      "page": 132,
+      "name": "Слэш",
+      "shortname": "slashcoffee_spb"
+    },
+    {
+      "page": 133,
+      "name": "Lu.Co. Local",
+      "shortname": "ludicoffee.1"
+    },
+    {
+      "page": 134,
+      "name": "Save my day",
+      "shortname": "savemyday_spb"
+    },
+    {
+      "page": 135,
+      "name": "Forget Me Not",
+      "shortname": "forgetmenot_coffee.1"
+    },
+    {
+      "page": 136,
+      "name": "Co-op 8s",
+      "shortname": "coop_8s.1"
+    },
+    {
+      "page": 137,
+      "name": "VID Coffee",
+      "shortname": "vid.coffee.spb.1"
+    },
+    {
+      "page": 138,
+      "name": "Рассвет",
+      "shortname": "rassvet.spb"
+    },
+    {
+      "page": 139,
+      "name": "René",
+      "shortname": "rene__cafe"
+    },
+    {
+      "page": 140,
+      "name": "Doris Local",
+      "shortname": "dorislocal"
+    },
+    {
+      "page": 141,
+      "name": "Doris Fragments",
+      "shortname": "dorisfragments"
+    },
+    {
+      "page": 142,
+      "name": "Фокус",
+      "shortname": "focuscoffeespb"
+    },
+    {
+      "page": 143,
+      "name": "Трубочерия",
+      "shortname": "trubocheriya.1"
+    },
+    {
+      "page": 144,
+      "name": "Cafe Le Moniteur",
+      "shortname": "cafelemoniteur"
+    },
+    {
+      "page": 145,
+      "name": "ЧиП",
+      "shortname": "chip_coffee"
+    },
+    {
+      "page": 146,
+      "name": "Коллектив кофе",
+      "shortname": "collective.petersburg"
+    },
+    {
+      "page": 147,
+      "name": "Skuratov",
+      "shortname": "skuratovcoffee.1"
+    },
+    {
+      "page": 148,
+      "name": "Все взаимно",
+      "shortname": "vce_vzaimno_spb"
+    },
+    {
+      "page": 149,
+      "name": "Kos.Place",
+      "shortname": "kos.place.1"
+    },
+    {
+      "page": 150,
+      "name": "Ray",
+      "shortname": "r.a.y.coffee"
+    },
+    {
+      "page": 151,
+      "name": "Academia Cafe",
+      "shortname": "academia__cafe"
+    },
+    {
+      "page": 152,
+      "name": "El Dorado",
+      "shortname": "eldorado.coffeeshop"
+    },
+    {
+      "page": 153,
+      "name": "Temple.Coffee",
+      "shortname": "temple.coffee.2"
+    },
+    {
+      "page": 154,
+      "name": "Щегол в Буквоеде",
+      "shortname": "schegolcoffee"
+    },
+    {
+      "page": 155,
+      "name": "AVCD",
+      "shortname": "avcd.coffee.1"
+    },
+    {
+      "page": 156,
+      "name": "Plump",
+      "shortname": "plump.cafe"
+    },
+    {
+      "page": 157,
+      "name": "Cookushka",
+      "shortname": "cookushka.cafe"
+    },
+    {
+      "page": 158,
+      "name": "Завари",
+      "shortname": "zavaricoffee"
+    },
+    {
+      "page": 159,
+      "name": "AIKI Тerrasa",
+      "shortname": "aikiterrasa"
+    },
+    {
+      "page": 160,
+      "name": "Кусь",
+      "shortname": "kus.cafe.2"
+    },
+    {
+      "page": 161,
+      "name": "Lu.Co.",
+      "shortname": "ludicoffee.2"
+    },
+    {
+      "page": 162,
+      "name": "Кофе и приятности",
+      "shortname": "coofep.1"
+    },
+    {
+      "page": 163,
+      "name": "MNTN Coffee",
+      "shortname": "mntncoffee"
+    },
+    {
+      "page": 164,
+      "name": "Dobro Coffee",
+      "shortname": "dobrocoffeemicroroasters"
+    },
+    {
+      "page": 165,
+      "name": "Эспрессо-тоник",
+      "shortname": "espresso_tonic_spb"
+    },
+    {
+      "page": 166,
+      "name": "Native",
+      "shortname": "native_lesnaya"
+    },
+    {
+      "page": 167,
+      "name": "Капля",
+      "shortname": "kaplya_coffee.2"
+    },
+    {
+      "page": 168,
+      "name": "Mer kaffe",
+      "shortname": "mer_kaffe"
+    },
+    {
+      "page": 169,
+      "name": "Vseklassno",
+      "shortname": "vseklassno.coffeebar"
+    },
+    {
+      "page": 170,
+      "name": "SOWA",
+      "shortname": "sowa_cafe"
+    },
+    {
+      "page": 171,
+      "name": "Оптимист",
+      "shortname": "optimist_spb"
+    },
+    {
+      "page": 172,
+      "name": "Skuratov",
+      "shortname": "skuratovcoffee.2"
+    },
+    {
+      "page": 173,
+      "name": "Amazing Cacao",
+      "shortname": "amazingcacao.1"
+    },
+    {
+      "page": 174,
+      "name": "Am Saint",
+      "shortname": "am.saint.coffee"
+    },
+    {
+      "page": 175,
+      "name": "Щегол",
+      "shortname": "schegolcoffee.1"
+    },
+    {
+      "page": 176,
+      "name": "Аврора",
+      "shortname": "auroracoffee.spb"
+    },
+    {
+      "page": 177,
+      "name": "Молния",
+      "shortname": "molnia_coffee"
+    },
+    {
+      "page": 178,
+      "name": "Pinscher Coffee",
+      "shortname": "pinschercoffee"
+    },
+    {
+      "page": 179,
+      "name": "Дом Флоу",
+      "shortname": "flowcoffee.home"
+    },
+    {
+      "page": 180,
+      "name": "Hollingshead",
+      "shortname": "hollingsheadbar"
+    },
+    {
+      "page": 181,
+      "name": "City Coffee",
+      "shortname": "citycoffeespb"
+    },
+    {
+      "page": 182,
+      "name": "Papapower",
+      "shortname": "papapowercoffee.1"
+    },
+    {
+      "page": 183,
+      "name": "Человек и пароход",
+      "shortname": "chip_coffee.1"
+    },
+    {
+      "page": 184,
+      "name": "Coffee Racer",
+      "shortname": "coffeeracer.spb"
+    },
+    {
+      "page": 185,
+      "name": "MNTN Coffee",
+      "shortname": "mntncoffee.1"
+    },
+    {
+      "page": 186,
+      "name": "Most",
+      "shortname": "wearemostcoffee"
+    },
+    {
+      "page": 187,
+      "name": "Kos place",
+      "shortname": "kos.place.2"
+    },
+    {
+      "page": 188,
+      "name": "Mad Espresso Team",
+      "shortname": "madespressoteam.1"
+    },
+    {
+      "page": 189,
+      "name": "Биография",
+      "shortname": "biography_coffee.1"
+    },
+    {
+      "page": 190,
+      "name": "Подписные издания",
+      "shortname": "izdaniya"
+    },
+    {
+      "page": 191,
+      "name": "Espresso Bike",
+      "shortname": "espressobike"
+    },
+    {
+      "page": 192,
+      "name": "Oh! My Tea",
+      "shortname": "ohmyteа"
+    },
+    {
+      "page": 193,
+      "name": "ТЧК",
+      "shortname": "coffee.tchk.spb"
+    },
+    {
+      "page": 194,
+      "name": "Смена",
+      "shortname": "smenacafe"
+    },
+    {
+      "page": 195,
+      "name": "Mad Espresso Team",
+      "shortname": "madespressoteam.2"
+    },
+    {
+      "page": 196,
+      "name": "SWAN",
+      "shortname": "swancoffeespb"
+    },
+    {
+      "page": 197,
+      "name": "KGallery Book Cafe",
+      "shortname": "kgallerybookcafe"
+    },
+    {
+      "page": 198,
+      "name": "Жмых",
+      "shortname": "coffee_miru"
+    },
+    {
+      "page": 199,
+      "name": "Кому кофе",
+      "shortname": "komucoffee"
+    },
+    {
+      "page": 200,
+      "name": "Знакомьтесь, Джо",
+      "shortname": "bolshe_coffee"
+    },
+    {
+      "page": 201,
+      "name": "Рид",
+      "shortname": "rid_coffee"
+    },
+    {
+      "page": 202,
+      "name": "Море внутри тебя",
+      "shortname": "more_insideyou"
+    },
+    {
+      "page": 203,
+      "name": "MNTN Coffee",
+      "shortname": "mntncoffee.2"
+    },
+    {
+      "page": 204,
+      "name": "Просто черный",
+      "shortname": "blackcoffeeco.ru"
+    },
+    {
+      "page": 205,
+      "name": "Питчер",
+      "shortname": "pitcherbar"
+    },
+    {
+      "page": 206,
+      "name": "Забыли сахар",
+      "shortname": "zabylisahar"
+    },
+    {
+      "page": 207,
+      "name": "Питчер",
+      "shortname": "pitcherbar.1"
+    },
+    {
+      "page": 208,
+      "name": "Будем знакомы",
+      "shortname": "budem.znakomy.coffee.1"
+    },
+    {
+      "page": 209,
+      "name": "Панорама",
+      "shortname": "panoramacafe.spb"
+    },
+    {
+      "page": 210,
+      "name": "Coffee3",
+      "shortname": "coffee3spb"
+    },
+    {
+      "page": 211,
+      "name": "Verle",
+      "shortname": "verlegarden"
+    },
+    {
+      "page": 212,
+      "name": "Зеленогорск",
+      "shortname": "lavkazelenogorsk"
+    },
+    {
+      "page": 213,
+      "name": "Винил и Кофе",
+      "shortname": "vinyl_and_coffee"
+    },
+    {
+      "page": 214,
+      "name": "Ivory Garden",
+      "shortname": "ivory.garden.spb"
+    },
+    {
+      "page": 215,
+      "name": "Фильтр",
+      "shortname": "filterspb"
+    },
+    {
+      "page": 216,
+      "name": "Фильтр",
+      "shortname": "filterspb.1"
+    },
+    {
+      "page": 217,
+      "name": "STIM",
+      "shortname": "stimcoffeehome"
+    },
+    {
+      "page": 218,
+      "name": "Парадная",
+      "shortname": "coffeelosophy.spb"
+    },
+    {
+      "page": 219,
+      "name": "Ôpetit",
+      "shortname": "o_petit.1"
+    },
+    {
+      "page": 220,
+      "name": "Limitless",
+      "shortname": "limitless.cafe.spb"
+    },
+    {
+      "page": 221,
+      "name": "Grán",
+      "shortname": "grancoffee"
+    },
+    {
+      "page": 222,
+      "name": "YNGЯНГ",
+      "shortname": "yngcoffee"
+    },
+    {
+      "page": 223,
+      "name": "Щегол",
+      "shortname": "schegolcoffee.2"
+    },
+    {
+      "page": 224,
+      "name": "Характер кофе",
+      "shortname": "characterofcoffee"
+    },
+    {
+      "page": 225,
+      "name": "Atom Heart",
+      "shortname": "atomheart.coffee"
+    },
+    {
+      "page": 226,
+      "name": "Civil",
+      "shortname": "civil.coffeebar.1"
+    },
+    {
+      "page": 227,
+      "name": "Пенка",
+      "shortname": "penka_home"
+    },
+    {
+      "page": 228,
+      "name": "Обычные люди",
+      "shortname": "everyday_people__"
+    },
+    {
+      "page": 229,
+      "name": "Кофе на кухне",
+      "shortname": "bolshe_coffee.1"
+    },
+    {
+      "page": 230,
+      "name": "Gaslight Cafe",
+      "shortname": "gaslight.cafe"
+    },
+    {
+      "page": 231,
+      "name": "Займёмся кофе",
+      "shortname": "zaymemsya_kofe"
+    },
+    {
+      "page": 232,
+      "name": "Больше кофе",
+      "shortname": "bolshe_coffee.2"
+    },
+    {
+      "page": 233,
+      "name": "Mad Espresso Team",
+      "shortname": "madespressoteam.3"
+    },
+    {
+      "page": 234,
+      "name": "Sibaristica",
+      "shortname": "sibaristica.1"
+    },
+    {
+      "page": 235,
+      "name": "Avgvst",
+      "shortname": "avgvstcoffee"
+    },
+    {
+      "page": 236,
+      "name": "Cookies",
+      "shortname": "ilikebigcookiesandicannotlie"
+    },
+    {
+      "page": 237,
+      "name": "Aster",
+      "shortname": "hello.aster.1"
+    },
+    {
+      "page": 238,
+      "name": "Colors",
+      "shortname": "colors.spb"
+    },
+    {
+      "page": 239,
+      "name": "Hand",
+      "shortname": "hand.spb"
+    },
+    {
+      "page": 240,
+      "name": "Skuratov",
+      "shortname": "skuratovcoffee.3"
+    },
+    {
+      "page": 241,
+      "name": "Zoe",
+      "shortname": "zoethebakery"
+    },
+    {
+      "page": 242,
+      "name": "Слой х Вспышка",
+      "shortname": "sloy.vspyshka"
+    },
+    {
+      "page": 243,
+      "name": "Maybe Tokyo",
+      "shortname": "maybetokyocoffee"
+    },
+    {
+      "page": 244,
+      "name": "marseille coffee",
+      "shortname": "marseille.caffe"
+    },
+    {
+      "page": 245,
+      "name": "Коммуна",
+      "shortname": "communacoffee.1"
+    },
+    {
+      "page": 246,
+      "name": "Skuratov",
+      "shortname": "skuratovcoffee.4"
+    },
+    {
+      "page": 247,
+      "name": "ТЧК",
+      "shortname": "filter.tchk"
+    },
+    {
+      "page": 248,
+      "name": "Tour Coffee",
+      "shortname": "tour.coffeebar.1"
+    },
+    {
+      "page": 249,
+      "name": "Babka Bakery",
+      "shortname": "bakery.babka"
+    },
+    {
+      "page": 250,
+      "name": "GEORGIANI",
+      "shortname": "georgiani"
+    },
+    {
+      "page": 251,
+      "name": "EASY HUMMUS",
+      "shortname": "easy_hummus"
+    },
+    {
+      "page": 252,
+      "name": "Fluffy Fluffy",
+      "shortname": "fluffy_fluffy"
+    },
+    {
+      "page": 253,
+      "name": "BRATSKI",
+      "shortname": "bratski"
+    },
+    {
+      "page": 254,
+      "name": "HOT DOG BULLDOG",
+      "shortname": "hot_dog_bulldog"
+    },
+    {
+      "page": 255,
+      "name": "PIMS",
+      "shortname": "pims"
+    },
+    {
+      "page": 256,
+      "name": "Сидоров Пролив",
+      "shortname": "sidorov_proliv"
+    },
+    {
+      "page": 257,
+      "name": "БАЗАР КОФЕ",
+      "shortname": "bazar_kofe"
+    },
+    {
+      "page": 258,
+      "name": "Cinnabon",
+      "shortname": "cinnabon"
+    },
+    {
+      "page": 259,
+      "name": "Годзи покушал",
+      "shortname": "godzi_pokushal"
+    },
+    {
+      "page": 260,
+      "name": "О’Боул",
+      "shortname": "o_boul"
+    },
+    {
+      "page": 261,
+      "name": "Bo",
+      "shortname": "bo"
+    },
+    {
+      "page": 262,
+      "name": "PizzaClub",
+      "shortname": "pizzaclub"
+    },
+    {
+      "page": 263,
+      "name": "Sweet Way",
+      "shortname": "sweet_way"
+    },
+    {
+      "page": 264,
+      "name": "TeaGo",
+      "shortname": "teago"
+    },
+    {
+      "page": 265,
+      "name": "The Indian Club",
+      "shortname": "the_indian_club"
+    },
+    {
+      "page": 266,
+      "name": "Пян-се",
+      "shortname": "pyan_se"
+    },
+    {
+      "page": 267,
+      "name": "ROSTIC’S",
+      "shortname": "rostic_s"
+    },
+    {
+      "page": 268,
+      "name": "Тихий Sushi lab",
+      "shortname": "tihiy_sushi_lab"
+    },
+    {
+      "page": 269,
+      "name": "Chang cafe",
+      "shortname": "chang_cafe"
+    },
+    {
+      "page": 270,
+      "name": "Yuzu",
+      "shortname": "yuzu"
+    },
+    {
+      "page": 271,
+      "name": "Skuratov Coffee",
+      "shortname": "skuratov_coffee"
+    },
+    {
+      "page": 272,
+      "name": "БЮРО: бургеры и бар",
+      "shortname": "byuro_burgery_i_bar"
+    },
+    {
+      "page": 273,
+      "name": "IKIGAI sushi lovers club",
+      "shortname": "ikigai_sushi_lovers_club"
+    },
+    {
+      "page": 274,
+      "name": "Bazar Street Food",
+      "shortname": "bazar_street_food"
+    },
+    {
+      "page": 275,
+      "name": "White Kitchen",
+      "shortname": "white_kitchen"
+    },
+    {
+      "page": 276,
+      "name": "Ом Нём Мнём",
+      "shortname": "om_nem_mnem"
+    },
+    {
+      "page": 277,
+      "name": "Узбечка на печке",
+      "shortname": "uzbechka_na_pechke"
+    },
+    {
+      "page": 278,
+      "name": "Meat Group Burgers",
+      "shortname": "meat_group_burgers"
+    },
+    {
+      "page": 279,
+      "name": "Hot Thai",
+      "shortname": "hot_thai"
+    },
+    {
+      "page": 280,
+      "name": "Pajeon Asian Street Food",
+      "shortname": "pajeon_asian_street_food"
+    },
+    {
+      "page": 281,
+      "name": "Right Hops",
+      "shortname": "right_hops"
+    },
+    {
+      "page": 282,
+      "name": "Морежители",
+      "shortname": "morezhiteli"
+    },
+    {
+      "page": 283,
+      "name": "Boba Tea",
+      "shortname": "boba_tea"
+    },
+    {
+      "page": 284,
+      "name": "Ontap",
+      "shortname": "ontap"
+    },
+    {
+      "page": 285,
+      "name": "Canyon & Coast Coffee",
+      "shortname": "spectra_drinks"
+    },
+    {
+      "page": 286,
+      "name": "Vokzal 1853",
+      "shortname": "vokzal1853.spb"
+    },
+    {
+      "page": 287,
+      "name": "idyllic",
+      "shortname": "idyllic.la.01925716"
+    }
+  ]
+}

@@ -36,6 +36,37 @@
   font-weight: 750;
 }
 
+.download-all-button {
+  display: inline-flex;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid #a7ef99;
+  border-radius: 14px;
+  align-items: center;
+  justify-content: center;
+  background: #a7ef99;
+  color: #11130f;
+  font-size: 14px;
+  font-weight: 850;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.download-all-button:hover {
+  border-color: #c5ffba;
+  background: #c5ffba;
+  transform: translateY(-1px);
+}
+
+.download-all-button:focus-visible {
+  outline: 3px solid rgba(167, 239, 153, 0.35);
+  outline-offset: 3px;
+}
+
 .search-empty {
   margin: 0;
   padding: 48px 24px;
@@ -230,13 +261,15 @@ canvas {
 
   .logo-position-field,
   .logo-position-select,
-  .logo-drag-field {
+  .logo-drag-field,
+  .download-all-button {
     width: 100%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .logo-drag-field,
+  .download-all-button,
   canvas,
   .render-trigger {
     transition: none;

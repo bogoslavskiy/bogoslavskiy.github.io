@@ -75,5 +75,11 @@
       "spread": 0,
       "color": "rgba(0, 0, 0, 0.1)"
     }
+  },
+  "logo_contrast": {
+    "minimum_median_ratio": 3,
+    "opaque_alpha_threshold": 230,
+    "halo_opacity": 0.82,
+    "halo_blur": 5
   }
 }

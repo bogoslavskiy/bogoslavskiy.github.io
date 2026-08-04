@@ -2,8 +2,20 @@
   "version": 1,
   "company": "У Ларисы — ковёр",
   "shortname": "u_larisy_carpet",
-  "text_color": "#fffbe0",
-  "company_logo": null,
+  "text_color": "#FFFFFF",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "light_halo",
+    "color": "#FFFFFF",
+    "opacity": 0.82,
+    "blur": 5,
+    "sample_count": 2782,
+    "observed_p10_ratio": 1.41,
+    "observed_median_ratio": 2.12,
+    "protected_p10_ratio": 14.03,
+    "protected_median_ratio": 14.89,
+    "minimum_median_ratio": 3
+  },
   "dimensions": "1465x1016",
   "density_dpi": 300,
   "physical_dimensions_mm": "124x86"

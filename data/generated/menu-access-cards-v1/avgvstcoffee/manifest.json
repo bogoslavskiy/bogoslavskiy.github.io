@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "company": "Avgvst",
+  "shortname": "avgvstcoffee",
+  "text_color": "#FFFFFF",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "none",
+    "color": null,
+    "opacity": 0,
+    "blur": 0,
+    "sample_count": 15755,
+    "observed_p10_ratio": 1.68,
+    "observed_median_ratio": 8.15,
+    "protected_p10_ratio": 1.68,
+    "protected_median_ratio": 8.15,
+    "minimum_median_ratio": 3
+  },
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}

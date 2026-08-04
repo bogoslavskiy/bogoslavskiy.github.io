@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "company": "Коммуна",
+  "shortname": "communacoffee.1",
+  "text_color": "#111111",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "light_halo",
+    "color": "#FFFFFF",
+    "opacity": 0.82,
+    "blur": 5,
+    "sample_count": 8764,
+    "observed_p10_ratio": 1.12,
+    "observed_median_ratio": 1.89,
+    "protected_p10_ratio": 1.47,
+    "protected_median_ratio": 3.22,
+    "minimum_median_ratio": 3
+  },
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}

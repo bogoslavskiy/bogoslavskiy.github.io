@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "company": "Щегол",
+  "shortname": "schegolcoffee.2",
+  "text_color": "#FFFFFF",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "none",
+    "color": null,
+    "opacity": 0,
+    "blur": 0,
+    "sample_count": 3871,
+    "observed_p10_ratio": 12.2,
+    "observed_median_ratio": 12.42,
+    "protected_p10_ratio": 12.2,
+    "protected_median_ratio": 12.42,
+    "minimum_median_ratio": 3
+  },
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}

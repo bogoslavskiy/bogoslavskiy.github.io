@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "company": "SOWA",
+  "shortname": "sowa_cafe",
+  "text_color": "#FFFFFF",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "light_halo",
+    "color": "#FFFFFF",
+    "opacity": 0.82,
+    "blur": 5,
+    "sample_count": 5295,
+    "observed_p10_ratio": 1.66,
+    "observed_median_ratio": 1.7,
+    "protected_p10_ratio": 5.52,
+    "protected_median_ratio": 5.93,
+    "minimum_median_ratio": 3
+  },
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}

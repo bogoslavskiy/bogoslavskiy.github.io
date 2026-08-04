@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "company": "Skuratov Coffee",
+  "shortname": "skuratov_coffee",
+  "text_color": "#111111",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "none",
+    "color": null,
+    "opacity": 0,
+    "blur": 0,
+    "sample_count": 14002,
+    "observed_p10_ratio": 18.87,
+    "observed_median_ratio": 19.35,
+    "protected_p10_ratio": 18.87,
+    "protected_median_ratio": 19.35,
+    "minimum_median_ratio": 3
+  },
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}

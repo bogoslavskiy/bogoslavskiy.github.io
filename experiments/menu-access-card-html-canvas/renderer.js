@@ -24,6 +24,8 @@ const companySearch = document.querySelector("#company-search");
 const searchResults = document.querySelector("#search-results");
 const searchEmpty = document.querySelector("#search-empty");
 const guidesToggle = document.querySelector("#guides-toggle");
+const printedToggle = document.querySelector("#printed-toggle");
+const downloadAllPdf = document.querySelector("#download-all-pdf");
 const statusText = document.querySelector("#status-text");
 const statusDot = document.querySelector("#status-dot");
 
@@ -48,22 +50,33 @@ function normalizeSearchValue(value) {
 
 function applyCompanySearch() {
   const query = normalizeSearchValue(companySearch.value);
+  const hidePrinted = printedToggle.checked;
   let visibleCompanies = 0;
+  let hiddenPrintedCompanies = 0;
 
   for (const company of companies) {
     const view = cardViews.get(company.shortname);
     const searchableName = normalizeSearchValue(
       `${company.name} ${company.shortname}`,
     );
-    const isVisible = query.length === 0 || searchableName.includes(query);
+    const matchesQuery =
+      query.length === 0 || searchableName.includes(query);
+    const isHiddenPrinted = hidePrinted && company.printed === true;
+    const isVisible = matchesQuery && !isHiddenPrinted;
     view.article.hidden = !isVisible;
     if (isVisible) visibleCompanies += 1;
+    if (isHiddenPrinted) hiddenPrintedCompanies += 1;
   }
 
+  const availableCompanies = companies.length - hiddenPrintedCompanies;
+  const printedSuffix = hidePrinted
+    ? ` · скрыто напечатанных: ${hiddenPrintedCompanies}`
+    : "";
   searchResults.textContent = query
-    ? `Найдено: ${visibleCompanies} из ${companies.length}`
-    : `${companies.length} компаний`;
+    ? `Найдено: ${visibleCompanies} из ${availableCompanies}${printedSuffix}`
+    : `${availableCompanies} компаний${printedSuffix}`;
   searchEmpty.hidden = visibleCompanies !== 0;
+  updateRenderStatus();
 }
 
 function logoPositionStorageKey(company) {
@@ -583,12 +596,15 @@ async function inspectPngBlob(blob) {
 }
 
 function updateRenderStatus() {
-  const renderedCards = [...cardViews.values()].filter(
+  const visibleViews = [...cardViews.values()].filter(
+    (view) => !view.article.hidden,
+  );
+  const renderedCards = visibleViews.filter(
     (view) => view.rendered,
   ).length;
   const message = renderedCards
-    ? `Отрендерено: ${renderedCards} из ${companies.length} · остальные собираются по клику`
-    : `${companies.length} карточек доступны · нажмите на превью для рендера`;
+    ? `Отрендерено: ${renderedCards} из ${visibleViews.length} · остальные собираются по клику`
+    : `${visibleViews.length} карточек доступны · нажмите на превью для рендера`;
   setStatus(message, "ready");
 }
 
@@ -1117,6 +1133,16 @@ async function initialize() {
     if (companies.length === 0) {
       throw new Error("Нет сгенерированных карточек для Canvas-эксперимента");
     }
+    if (downloadAllPdf) {
+      const unprintedCompanies = companies.filter(
+        (company) => company.printed !== true,
+      );
+      downloadAllPdf.textContent = `Скачать ${unprintedCompanies.length} ненапечатанных карточек PDF`;
+      downloadAllPdf.setAttribute(
+        "aria-label",
+        `Скачать PDF без напечатанных карточек: ${unprintedCompanies.length} страниц`,
+      );
+    }
 
     for (const company of companies) {
       cardViews.set(company.shortname, createCardView(company));
@@ -1134,5 +1160,6 @@ guidesToggle.addEventListener("change", () => {
 });
 
 companySearch.addEventListener("input", applyCompanySearch);
+printedToggle.addEventListener("change", applyCompanySearch);
 
 initialize();

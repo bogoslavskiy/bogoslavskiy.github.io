@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "company": "Sweet Way",
+  "shortname": "sweet_way",
+  "text_color": "#111111",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "none",
+    "color": null,
+    "opacity": 0,
+    "blur": 0,
+    "sample_count": 19900,
+    "observed_p10_ratio": 1.04,
+    "observed_median_ratio": 16.05,
+    "protected_p10_ratio": 1.04,
+    "protected_median_ratio": 16.05,
+    "minimum_median_ratio": 3
+  },
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}

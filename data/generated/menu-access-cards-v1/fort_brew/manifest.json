@@ -4,6 +4,18 @@
   "shortname": "fort_brew",
   "text_color": "#111111",
   "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "light_halo",
+    "color": "#FFFFFF",
+    "opacity": 0.82,
+    "blur": 5,
+    "sample_count": 12103,
+    "observed_p10_ratio": 1.27,
+    "observed_median_ratio": 1.57,
+    "protected_p10_ratio": 2.07,
+    "protected_median_ratio": 4.23,
+    "minimum_median_ratio": 3
+  },
   "dimensions": "1465x1016",
   "density_dpi": 300,
   "physical_dimensions_mm": "124x86"

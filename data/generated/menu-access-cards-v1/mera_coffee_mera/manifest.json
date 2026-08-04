@@ -4,6 +4,18 @@
   "shortname": "mera_coffee_mera",
   "text_color": "#FFFFFF",
   "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "light_halo",
+    "color": "#FFFFFF",
+    "opacity": 0.82,
+    "blur": 5,
+    "sample_count": 16371,
+    "observed_p10_ratio": 1.83,
+    "observed_median_ratio": 1.92,
+    "protected_p10_ratio": 3.98,
+    "protected_median_ratio": 4.04,
+    "minimum_median_ratio": 3
+  },
   "dimensions": "1465x1016",
   "density_dpi": 300,
   "physical_dimensions_mm": "124x86"

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "company": "Море внутри тебя",
+  "shortname": "more_insideyou",
+  "text_color": "#FFFFFF",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "dark_halo",
+    "color": "#000000",
+    "opacity": 0.82,
+    "blur": 5,
+    "sample_count": 28060,
+    "observed_p10_ratio": 2.69,
+    "observed_median_ratio": 2.79,
+    "protected_p10_ratio": 5.56,
+    "protected_median_ratio": 5.68,
+    "minimum_median_ratio": 3
+  },
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}

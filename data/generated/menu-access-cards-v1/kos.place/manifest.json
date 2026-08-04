@@ -4,6 +4,18 @@
   "shortname": "kos.place",
   "text_color": "#FFFFFF",
   "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "none",
+    "color": null,
+    "opacity": 0,
+    "blur": 0,
+    "sample_count": 1253,
+    "observed_p10_ratio": 13.34,
+    "observed_median_ratio": 13.7,
+    "protected_p10_ratio": 13.34,
+    "protected_median_ratio": 13.7,
+    "minimum_median_ratio": 3
+  },
   "dimensions": "1465x1016",
   "density_dpi": 300,
   "physical_dimensions_mm": "124x86"

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "company": "ТЧК",
+  "shortname": "filter.tchk",
+  "text_color": "#FFFFFF",
+  "company_logo": "company-logo.png",
+  "company_logo_contrast": {
+    "mode": "none",
+    "color": null,
+    "opacity": 0,
+    "blur": 0,
+    "sample_count": 9851,
+    "observed_p10_ratio": 5.58,
+    "observed_median_ratio": 5.7,
+    "protected_p10_ratio": 5.58,
+    "protected_median_ratio": 5.7,
+    "minimum_median_ratio": 3
+  },
+  "dimensions": "1465x1016",
+  "density_dpi": 300,
+  "physical_dimensions_mm": "124x86"
+}
